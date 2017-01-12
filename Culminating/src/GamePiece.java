@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class GamePiece implements Runnable {
-
+ 
 	private double x;
 	private double y;
 	private double xSpeed;

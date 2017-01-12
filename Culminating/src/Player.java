@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
+ 
 public class Player extends GamePiece{
 	private PlayerType shape;
 	private BufferedImage image1;
