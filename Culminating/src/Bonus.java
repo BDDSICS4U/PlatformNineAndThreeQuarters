@@ -24,14 +24,16 @@ public class Bonus extends GamePiece{
 		}
 	}
 
-	public void draw(Graphics g) {
+	public void draw(BufferedImage image) {
 		switch(shape){
 		case POINT:{
-			g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			image.getGraphics().drawImage(image1, (int) getX(), (int) getY(), 30, 30, null);
+			//g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		case LIFE:{
-			g.drawImage(image1.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			image.getGraphics().drawImage(image2, (int) getX(), (int) getY(), 30, 30, null);
+			//g.drawImage(image1.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		}

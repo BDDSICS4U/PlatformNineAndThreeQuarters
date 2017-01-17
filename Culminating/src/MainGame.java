@@ -19,10 +19,13 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	private static final int width = 1920;
 	private static final int height = 990;
 	int key = 0;
+	
+	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
+
 	public static void setup(){
 		switch(currentLevel){
 		case START:{
-
+			
 			break;
 		}
 		case LEVEL1:{
@@ -50,10 +53,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		frame.setSize(width,height);
 		frame.setFont(new Font("System", Font.ROMAN_BASELINE, 14));
 		String space ="";
-		for(int i =0; i < 85;i++){
+		for(int i = 0; i < 85; i++){
 			space += "  ";
 		}
-		frame.setTitle(space+ "Game");
+		frame.setTitle(space+ "Platform Nine and Three Quarters");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(width, height));
 		frame.setAutoRequestFocus(false);
@@ -61,7 +64,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		Container c = frame.getContentPane();
 		c.add(new MainGame());
 		frame.pack();
-
+		frame.setBackground(Color.CYAN);
 	}
 
 	public MainGame(){
@@ -78,6 +81,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		while (true) {
 			if(!gameOver){
 				this.requestFocus();
+				p1.getX();
+				p1.getY();
 				if(key==38){
 
 				}
