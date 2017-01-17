@@ -14,9 +14,10 @@ public class Player extends GamePiece {
 
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
-		this.shape = shape;
+		setPlayerType(shape);
 		setHP(3);
-		this.coins = 0;
+		setCoins(0);
+		setVisability(true);
 		try {
 			image1 = ImageIO.read(new File("src/resources/Smiley.svg.png"));
 			image2 = ImageIO.read(new File("src/resources/Smiley.svg.png"));
@@ -46,7 +47,11 @@ public class Player extends GamePiece {
 	}
 
 	public void animateOneStep() {
-		this.draw(image1);
+		//this.draw(image1);
+	}
+
+	private void setPlayerType(PlayerType shape) {
+		this.shape = shape;
 	}
 
 	public void setHP(int hp) {
@@ -56,9 +61,21 @@ public class Player extends GamePiece {
 	public int getHP() {
 		return this.hp;
 	}
-	
-	public void setCoins(int coin){
+
+	public void setCoins(int coin) {
 		this.coins = coin;
 	}
 
+	public int getCoins() {
+		return this.coins;
+	}
+	
+	public void setVisability(boolean state){
+		this.displayed = state;
+	}
+
+	public boolean getVisability(){
+		return this.displayed;
+	}
+	
 }

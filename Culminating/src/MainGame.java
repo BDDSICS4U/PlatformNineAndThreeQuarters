@@ -50,7 +50,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setSize(width,height);
+		frame.setSize(width, height);
 		frame.setFont(new Font("System", Font.ROMAN_BASELINE, 14));
 		String space ="";
 		for(int i = 0; i < 85; i++){
@@ -81,8 +81,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		while (true) {
 			if(!gameOver){
 				this.requestFocus();
-				p1.getX();
-				p1.getY();
+				System.out.println(p1.getX() + ", " + p1.getY());
 				if(key==38){
 
 				}
