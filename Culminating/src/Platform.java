@@ -1,4 +1,7 @@
-
+/* ISC4U culminating game
+ * A simple platforming game
+ * @author: Brendan Russell, Dalton Firth, Daniel Nucci and Stuart Detrich
+ */
  
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,12 +11,27 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * A type of GamePiece that the player stands on
+ * @author Daniel Nucci
+ *
+ */
 public class Platform extends GamePiece{
 	private PlatformType shape;
 	private BufferedImage image1;
 	private BufferedImage image2;
 	private BufferedImage image3;
 
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param left
+	 * @param right
+	 * @param top
+	 * @param bottom
+	 * @param shape
+	 */
 	public Platform(double x, double y, int left, int right, int top, int bottom, PlatformType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -28,6 +46,9 @@ public class Platform extends GamePiece{
 		}
 	}
 
+	/**
+	 * draws the image of the platform
+	 */
 	public void draw(Graphics g) {
 		switch(shape){
 		case SOLID:{
