@@ -51,7 +51,9 @@ public class Enemy extends GamePiece{
 
 	public void animateOneStep() {
 	}
-
-
+	
+	
+	
+	
 
 }

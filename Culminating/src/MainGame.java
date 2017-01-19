@@ -7,7 +7,8 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
- 
+import java.util.Collections;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,8 +17,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	public static Level currentLevel = Level.START;
 	private boolean gameOver = false;
 	private static int count = 0;
-	private static final int width = 1920;
-	private static final int height = 990;
+	private static final int width = 500;
+	private static final int height = 500;
+	ArrayList<Integer> listOfKeys = new ArrayList<Integer>();
 	int key = 0;
 	
 	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
@@ -81,7 +83,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		while (true) {
 			if(!gameOver){
 				this.requestFocus();
-				System.out.println(p1.getX() + ", " + p1.getY());
+				for(int i =0; i < listOfKeys.size(); i++){
+					System.out.print(listOfKeys.get(i) + ", ");
+				}
+				System.out.println();
 				if(key==38){
 
 				}
@@ -100,7 +105,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 			}
 			repaint();
-
+			
 		}
 	}
 
@@ -131,13 +136,20 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		key = e.getKeyCode();
+		listOfKeys = bubble(listOfKeys);
+		if(binary(listOfKeys, e.getKeyCode()) == -1){
+			listOfKeys.add(e.getKeyCode());
+		}
+		//key = e.getKeyCode();
 		repaint();
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		key = 0;
+		listOfKeys = bubble(listOfKeys);
+		if (binary(listOfKeys, e.getKeyCode()) != -1){
+			listOfKeys.remove(binary(listOfKeys, e.getKeyCode()));
+		}
 		repaint();
 	}
 
@@ -147,4 +159,75 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 	}
 
+	/**
+	 * this method sorts a int array using bubble sort
+	 * 
+	 * @param a
+	 *           a int array that will be sorted
+	 */
+	public static ArrayList<Integer> bubble(ArrayList<Integer> a) {
+		int counter = 0;
+
+		for (int i = 0; i < a.size() - 1; i++) {
+			for (int j = 0; j < a.size() - 1 - i; j++) {
+				if (a.get(j) > a.get(j + 1)) {
+					Collections.swap(a, j, j + 1);
+					counter++;
+				}
+			}
+			if (counter == 0) {
+				break;
+			}
+			counter = 0;
+		}
+		return a;
+	}
+	
+	
+	/**
+	 * Feeder method for binary search through an array of ints
+	 * 
+	 * @param array
+	 *           ArrayList<Integer> - the array you want to get a value from
+	 * @param target
+	 *           int - the value of your target
+	 * @return the loader method
+	 */
+	public static int binary(ArrayList<Integer> array, int target) {
+		return binary(array, target, 0, array.size() - 1);
+	}
+	
+	/**
+	 * The loader method for binary search through an array of ints
+	 * 
+	 * @param array
+	 *           ArrayList<Integer> - the array you want to get a value from
+	 * @param target
+	 *           int - the value of your target
+	 * @param startIndex
+	 *           int - the starting index of the current instance of the array
+	 * @param endIndex
+	 *           int - the ending index of the current instance of the array
+	 * @return the index at which the target occurs
+	 */
+	private static int binary(ArrayList<Integer> array, int target, int startIndex, int endIndex) {
+		int midpoint = (startIndex + endIndex) / 2;
+
+		if (startIndex > endIndex) {
+			return -1;
+		}
+
+		if (target == array.get(midpoint)) {
+			return midpoint;
+		}
+		else if (target > array.get(midpoint)) {
+			return binary(array, target, midpoint + 1, endIndex);
+		}
+		else if (target < array.get(midpoint)) {
+			return binary(array, target, startIndex, midpoint - 1);
+		}
+
+		return -1;
+	}
+	
 }

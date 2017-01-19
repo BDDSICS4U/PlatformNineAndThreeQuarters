@@ -49,6 +49,7 @@ public class Platform extends GamePiece{
 
 	public void animateOneStep() {
 	}
+ 
 
 
 
