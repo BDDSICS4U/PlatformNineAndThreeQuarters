@@ -19,7 +19,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	private static final int height = 990;
 	private int key = 0;
 	private long pauseDuration = 30;
-	
+	//Player One
 	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
 
 	public void setup(){
