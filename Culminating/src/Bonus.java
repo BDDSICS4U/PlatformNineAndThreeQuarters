@@ -10,8 +10,12 @@ import javax.imageio.ImageIO;
  
 public class Bonus extends GamePiece{
 	private BonusType shape;
-	private BufferedImage image1;
-	private BufferedImage image2;
+	private Image image1;
+	private int image1Height = 50;
+	private int	image1Width = 50;
+	private Image image2;
+	private int image2Height = 50;
+	private int	image2Width = 50;
 	public Bonus(double x, double y, int left, int right, int top, int bottom, BonusType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -24,15 +28,15 @@ public class Bonus extends GamePiece{
 		}
 	}
 
-	public void draw(BufferedImage image) {
+	public void draw(Graphics g) {
 		switch(shape){
 		case POINT:{
-			image.getGraphics().drawImage(image1, (int) getX(), (int) getY(), 30, 30, null);
+			g.drawImage(image1, (int) getX(), (int) getY(), image1Height, image2Width, null);
 			//g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		case LIFE:{
-			image.getGraphics().drawImage(image2, (int) getX(), (int) getY(), 30, 30, null);
+			g.drawImage(image2, (int) getX(), (int) getY(), image2Height, image2Width, null);
 			//g.drawImage(image1.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}

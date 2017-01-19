@@ -1,6 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 
 public abstract class GamePiece implements Runnable {
  
@@ -56,7 +56,7 @@ public abstract class GamePiece implements Runnable {
 		}
 	}
 
-	abstract public void draw(BufferedImage image);
+	abstract public void draw(Graphics g);
 
 	abstract public void animateOneStep();
 
