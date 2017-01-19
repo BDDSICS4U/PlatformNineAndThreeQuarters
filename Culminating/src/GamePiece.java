@@ -18,11 +18,11 @@ public abstract class GamePiece implements Runnable {
 
 	public GamePiece(double x, double y, int left, int right, int top, int bottom) {
 		this.pauseDuration = 40;
-		this.xSpeed = 0;
-		this.ySpeed = 0;
-		this.color = Color.black;
-		this.x = x;
-		this.y = y;
+		setXSpeed(0);
+		setXSpeed(0);
+		setColor(Color.black);
+		setX(x);
+		setY(y);
 		this.left = left;
 		this.right = right;
 		this.top = top;
@@ -76,12 +76,20 @@ public abstract class GamePiece implements Runnable {
 		this.ySpeed = ySpeed;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
+	}
+	
+	public double getYSpeed(){
+		return this.ySpeed;
+	}
+	
+	public double getXSpeed(){
+		return this.xSpeed;
 	}
 
 	public void setColor(Color color) {
