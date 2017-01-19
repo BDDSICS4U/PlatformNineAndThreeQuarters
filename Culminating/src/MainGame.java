@@ -3,26 +3,26 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
  
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
+
 public class MainGame extends JPanel implements Runnable, KeyListener {
 	public static Level currentLevel = Level.START;
 	private boolean gameOver = false;
 	private static int count = 0;
 	private static final int width = 1920;
 	private static final int height = 990;
-	int key = 0;
+	private int key = 0;
+	private long pauseDuration = 30;
 	
 	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
 
-	public static void setup(){
+	public void setup(){
 		switch(currentLevel){
 		case START:{
 			
@@ -45,6 +45,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 			break;
 		}
 		}
+		p1.setVisibility(true);
 
 	}
 
@@ -70,7 +71,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	public MainGame(){
 		// Start the setup
 		this.setPreferredSize(new Dimension(width, height));
-		this.setBackground(Color.BLACK);
+		this.setBackground(Color.CYAN);
 		addKeyListener(this);
 		Thread gameThread = new Thread(this);
 		gameThread.start();
@@ -83,8 +84,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				this.requestFocus();
 				p1.getX();
 				p1.getY();
+				
 				if(key==38){
-
 				}
 				else if(key==40){
 
@@ -101,6 +102,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 			}
 			repaint();
+			try{
+				Thread.sleep(pauseDuration);
+			} catch(InterruptedException e){
+			}
 
 		}
 	}
@@ -110,7 +115,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	}
 	
 	public void paintComponent(Graphics g) {
-		
+		super.paintComponent(g);
+		p1.draw(g);
 
 	}
 

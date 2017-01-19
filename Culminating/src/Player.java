@@ -1,5 +1,9 @@
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,6 +15,7 @@ public class Player extends GamePiece {
 	private PlayerType shape;
 	private BufferedImage image1;
 	private BufferedImage image2;
+	
 
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
@@ -26,17 +31,20 @@ public class Player extends GamePiece {
 		}
 	}
 
-	public void draw(BufferedImage image) {
+	public void draw(Graphics g) {
 		switch (shape) {
 		case PLAYER1: {
-			System.out.println("asdf");
-			image.getGraphics().drawImage(image1, (int) getX(), (int) getY(), 30, 30, null);
+			
+			g.drawImage(image1, (int) getX(), (int) getY(), 200,200, null);
+			//g.drawImage(image1.getScaledInstance(50, 50, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			// g.drawImage(image1.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		case PLAYER2: {
-			image.getGraphics().drawImage(image2, (int) getX(), (int) getY(), 30, 30, null);
+			if(displayed){
+				g.drawImage(image1, (int) getX(), (int) getY(), 50,50, null);
+			}
 			// g.drawImage(image2.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
@@ -44,9 +52,12 @@ public class Player extends GamePiece {
 		}
 
 	}
+	
+	public void setVisibility(boolean visible){
+		this.displayed = visible;
+	}
 
 	public void animateOneStep() {
-		this.draw(image1);
 	}
 
 	public void setHP(int hp) {
