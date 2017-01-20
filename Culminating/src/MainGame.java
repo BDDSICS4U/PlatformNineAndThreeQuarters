@@ -21,11 +21,12 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	private long pauseDuration = 30;
 	//Player One
 	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
+	Player p2 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER2);
 
 	public void setup(){
 		switch(currentLevel){
 		case START:{
-			
+			p2.setVisibility(true);
 			break;
 		}
 		case LEVEL1:{
@@ -86,9 +87,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				p1.getY();
 				
 				if(key==38){
+					p1.addCoins(1);
 				}
 				else if(key==40){
-
+					
 				}
 				else if(key==37){
 
@@ -117,6 +119,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		p1.draw(g);
+		p2.draw(g);
 
 	}
 
