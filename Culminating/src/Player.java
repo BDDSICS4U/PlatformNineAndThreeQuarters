@@ -1,30 +1,33 @@
 
-import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 public class Player extends GamePiece {
-	private int hp, coins;
+	private int hp;
 	private boolean displayed;
 	private PlayerType shape;
-	private BufferedImage image1;
-	private BufferedImage image2;
+	private BufferedImage lionImage;
+	private BufferedImage penguinImage;
+	private BufferedImage pigImage;
+	private BufferedImage sharkImage;
 	
 
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
+		this.setXSpeed((int) (Math.random() * 8));
+		this.setYSpeed((int) (Math.random() * 8)); 
 		this.shape = shape;
 		setHP(3);
-		this.coins = 0;
 		try {
-			image1 = ImageIO.read(new File("src/resources/Smiley.svg.png"));
-			image2 = ImageIO.read(new File("src/resources/Smiley.svg.png"));
+			lionImage = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+			penguinImage = ImageIO.read(new File("src/Pictures/Penguin.png"));
+			pigImage = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+			sharkImage = ImageIO.read(new File("src/Pictures/Shark.png"));
 
 		} catch (IOException ex) {
 			System.out.println("No Images");
@@ -35,7 +38,8 @@ public class Player extends GamePiece {
 		switch (shape) {
 		case PLAYER1: {
 			
-			g.drawImage(image1, (int) getX(), (int) getY(), 200,200, null);
+			g.drawImage(lionImage, (int) getX(), (int) getY(), 200,200, null);
+			
 			//g.drawImage(image1.getScaledInstance(50, 50, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			// g.drawImage(image1.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
@@ -43,7 +47,7 @@ public class Player extends GamePiece {
 		}
 		case PLAYER2: {
 			if(displayed){
-				g.drawImage(image1, (int) getX(), (int) getY(), 50,50, null);
+				g.drawImage(penguinImage, (int) getX(), (int) getY(), 200,200, null);
 			}
 			// g.drawImage(image2.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
@@ -67,9 +71,7 @@ public class Player extends GamePiece {
 	public int getHP() {
 		return this.hp;
 	}
+
 	
-	public void setCoins(int coin){
-		this.coins = coin;
-	}
 
 }

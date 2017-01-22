@@ -5,7 +5,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
- 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -14,18 +18,22 @@ import javax.swing.JPanel;
 public class MainGame extends JPanel implements Runnable, KeyListener {
 	public static Level currentLevel = Level.START;
 	private boolean gameOver = false;
-	private static int count = 0;
+	//private static int count = 0;
 	private static final int width = 1920;
 	private static final int height = 990;
 	private int key = 0;
 	private long pauseDuration = 30;
-	
+	private int coins;
+	//Player One
 	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
+	Player p2 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER2);
+	
+	BufferedImage coinImage;
 
 	public void setup(){
 		switch(currentLevel){
 		case START:{
-			
+			p2.setVisibility(true);
 			break;
 		}
 		case LEVEL1:{
@@ -73,6 +81,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		this.setPreferredSize(new Dimension(width, height));
 		this.setBackground(Color.CYAN);
 		addKeyListener(this);
+		try{
+			coinImage = ImageIO.read(new File("src/Pictures/Life.png"));
+		}catch(IOException ex){
+		}
 		Thread gameThread = new Thread(this);
 		gameThread.start();
 		setup();
@@ -86,9 +98,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				p1.getY();
 				
 				if(key==38){
+					this.coins++;
 				}
 				else if(key==40){
-
+					
 				}
 				else if(key==37){
 
@@ -110,6 +123,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void resetLevel() {
 		
 	}
@@ -117,6 +131,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		p1.draw(g);
+		p2.draw(g);
+		g.drawImage(coinImage, 1790, 10, 50,50,null);
+		g.setFont(new Font("SansSerif",Font.BOLD,25));
+		g.drawString(coins+"", 1850, 45);
 
 	}
 

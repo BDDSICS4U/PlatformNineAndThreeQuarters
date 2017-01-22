@@ -10,17 +10,17 @@ import javax.imageio.ImageIO;
 
 public class Enemy extends GamePiece{
 	private EnemyType shape;
-	private Image image1;
-	private Image image2;
-	private Image image3;
+	private Image enemyLion;
+	private Image enemyPig;
+	private Image enemyPenguin;
 
 	public Enemy(double x, double y, int left, int right, int top, int bottom, EnemyType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {                
-			image1 = ImageIO.read(new File(""));
-			image2 = ImageIO.read(new File(""));
-			image3 = ImageIO.read(new File(""));
+			enemyLion = ImageIO.read(new File(""));
+			enemyPig = ImageIO.read(new File(""));
+			enemyPenguin = ImageIO.read(new File(""));
 
 
 		} catch (IOException ex) {
@@ -31,18 +31,18 @@ public class Enemy extends GamePiece{
 	public void draw(Graphics g) {
 		switch(shape){
 		case WEAK:{
-			g.drawImage(image1, (int) getX(), (int) getY(), 30, 30, null);
-			//g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			g.drawImage(enemyLion, (int) getX(), (int) getY(), 30, 30, null);
+			//g.drawImage(enemyPig.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		case MEDIUM:{
-			g.drawImage(image2, (int) getX(), (int) getY(), 30, 30, null);
-			//g.drawImage(image1.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			g.drawImage(enemyPig, (int) getX(), (int) getY(), 30, 30, null);
+			//g.drawImage(enemyLion.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		case STRONG:{
-			g.drawImage(image3, (int) getX(), (int) getY(), 30, 30, null);
-			//g.drawImage(image3.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			g.drawImage(enemyPenguin, (int) getX(), (int) getY(), 30, 30, null);
+			//g.drawImage(enemyPenguin.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
 		}
