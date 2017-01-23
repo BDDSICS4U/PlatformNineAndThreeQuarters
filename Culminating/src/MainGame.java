@@ -123,7 +123,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		platforms.add(new Platform(1000, 690, 0, width, 0, height, PlatformType.SOLID));
 
 		platforms.add(new Platform(500, 490, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(600, 490, 0, width, 0, height, PlatformType.SOLID));
+		
 		platforms.add(new Platform(800, 490, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(900, 490, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(1000, 490, 0, width, 0, height, PlatformType.SOLID));
@@ -132,11 +132,11 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		platforms.add(new Platform(1200, 290, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(1300, 290, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(1400, 290, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1500, 290, 0, width, 0, height, PlatformType.SOLID));
+		
 
 		platforms.add(new Platform(1800, 190, 0, width, 0, height, PlatformType.MOVING));
 		platforms.add(new Platform(1800, 290, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1700, 290, 0, width, 0, height, PlatformType.SOLID));
+		
 
 		bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
 
@@ -160,7 +160,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				}
 
 
-				if(!didPlayerCollidePlatformR() && !didPlayerCollidePlatformL() && !didPlayerCollidePlatformB()){
+				if(!didPlayerCollidePlatformR() && !didPlayerCollidePlatformL()){
 					//Touching Top of Platform
 					if(didPlayerCollidePlatformT()){
 						p1.setXSpeed(0);
@@ -172,10 +172,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						if(key==37){
 							double tempX = p1.getX();
 							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()-5));
+							p1.setX((int) (p1.getX()-8));
 							p1.setY((int) (p1.getY()));
 							//If touch side of block can't move
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() || didPlayerCollidePlatformB()){
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
 								p1.setX((int) tempX);
 								p1.setY((int) tempY);
 								p1.setXSpeed(0);
@@ -189,10 +189,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						if(key==39){
 							double tempX = p1.getX();
 							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()+5));
+							p1.setX((int) (p1.getX()+8));
 							p1.setY((int) (p1.getY()));
 							//If touch side of block can't move
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() || didPlayerCollidePlatformB()){
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL()){
 								p1.setX((int) tempX);
 								p1.setY((int) tempY);
 								p1.setXSpeed(0);
@@ -213,9 +213,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						else if(key==37){
 							double tempX = p1.getX();
 							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()-5));
+							p1.setX((int) (p1.getX()-8));
 							p1.setY((int) (p1.getY()));
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() || didPlayerCollidePlatformB()){
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
 								p1.setX((int) tempX);
 								p1.setY((int) tempY);
 								p1.setXSpeed(0);
@@ -227,9 +227,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						else if(key==39){
 							double tempX = p1.getX();
 							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()+5));
+							p1.setX((int) (p1.getX()+8));
 							p1.setY((int) (p1.getY()));
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() || didPlayerCollidePlatformB()){
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
 								p1.setX((int) tempX);
 								p1.setY((int) tempY);
 								p1.setXSpeed(0);
