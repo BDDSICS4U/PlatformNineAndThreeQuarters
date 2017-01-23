@@ -68,6 +68,12 @@ public abstract class GamePiece implements Runnable {
 		return y;
 	}
 
+	public double getXSpeed(){
+		return xSpeed;
+	}
+	public double getYSpeed(){
+		return ySpeed;
+	}
 	public void setXSpeed(double xSpeed) {
 		this.xSpeed = xSpeed;
 	}

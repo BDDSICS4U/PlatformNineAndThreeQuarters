@@ -17,7 +17,7 @@ public class Platform extends GamePiece{
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {                
-			image1 = ImageIO.read(new File(""));
+			image1 = ImageIO.read(new File("src/Pictures/Permanent.png"));
 			image2 = ImageIO.read(new File(""));
 			image3 = ImageIO.read(new File(""));
 
@@ -30,7 +30,7 @@ public class Platform extends GamePiece{
 	public void draw(Graphics g) {
 		switch(shape){
 		case SOLID:{
-			g.drawImage(image1, (int) getX(), (int) getY(), 30, 30, null);
+			g.drawImage(image1, (int) getX(), (int) getY(), 100, 100, null);
 			//g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
