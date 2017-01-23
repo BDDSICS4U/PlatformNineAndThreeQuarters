@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -25,9 +26,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	private long pauseDuration = 30;
 	private int coins;
 	//Player One
-	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1);
-	Player p2 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER2);
+	Player p1 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER1, PlayerPicture.SHARK);
+	Player p2 = new Player(500, 500, 0, width, 0, height, PlayerType.PLAYER2, PlayerPicture.LION);
 	
+	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	BufferedImage coinImage;
 
 	public void setup(){
@@ -53,7 +55,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 			break;
 		}
 		}
-		p1.setVisibility(true);
 
 	}
 
@@ -101,7 +102,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 					this.coins++;
 				}
 				else if(key==40){
-					
+					enemies.add(new Enemy(width, height/2, 0, width, 0, height, EnemyType.MEDIUM, EnemyPicture.PIG));
+					enemies.get(enemies.size()-1).setXSpeed(-2);
 				}
 				else if(key==37){
 
@@ -135,6 +137,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		g.drawImage(coinImage, 1790, 10, 50,50,null);
 		g.setFont(new Font("SansSerif",Font.BOLD,25));
 		g.drawString(coins+"", 1850, 45);
+		for(int i=0; i<enemies.size(); i++){
+			enemies.get(i).draw(g);
+		}
 
 	}
 
