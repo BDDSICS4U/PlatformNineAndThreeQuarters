@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,20 +14,20 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 
 public class MainGame extends JPanel implements Runnable, KeyListener {
+	HashMap<Integer,Boolean> keyMap = new HashMap<Integer,Boolean>();
 	public static Level currentLevel = Level.START;
 	private boolean gameOver = false;
 	private static int count = 0;
 	private static final int width = 1920;
 	private static final int height = 990;
-	private int key = 0;
 	private long pauseDuration = 30;
 	//Player One
 	Player p1 = new Player(101, 790, 0, width, 0, height, PlayerType.PLAYER1);
 	Player p2 = new Player(201, 790, 0, width, 0, height, PlayerType.PLAYER2);
 	public static ArrayList<Platform> platforms = new ArrayList<Platform>(0);
 	public static ArrayList<Bonus> bonuses = new ArrayList<Bonus>(0);
-	public static double jumpY = 0;
-	public static double jumpX = 0;
+	public static double jumpYP1 = 0;
+	public static double jumpYP2 = 0;
 
 	public void setup(){
 		switch(currentLevel){
@@ -144,6 +145,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
 		while (true) {
 			if(!gameOver){
+				
 				this.requestFocus();
 				p1.getX();
 				p1.getY();
@@ -163,7 +165,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				if(didPlayerCollidePlatformR()){
 					//System.out.println("R");
 				}
-				System.out.println(key);
+				
 
 
 				if(!didPlayerCollidePlatformRP2() && !didPlayerCollidePlatformLP2()){
@@ -175,7 +177,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 					//Not Touching any platform
 					if(!didPlayerCollidePlatformTP2()){
 						//Move left
-						if(key==65){
+						if(keyMap.get(65) == Boolean.TRUE){
+							
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()-8));
@@ -192,7 +195,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 						}
 						//Move right
-						if(key==68){
+						if(keyMap.get(68) == Boolean.TRUE){
+							
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()+8));
@@ -210,13 +214,15 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 					//Touching a platform
 					if(didPlayerCollidePlatformTP2()){
 						//Jump
-						if(key==87){
-							jumpY = p2.getY();
+						if(keyMap.get(87) == Boolean.TRUE){
+							
+							jumpYP2 = p2.getY();
 							p2.setXSpeed(0);
 							p2.setYSpeed(-10);
 						}
 						//Move left
-						else if(key==65){
+						else if(keyMap.get(65) == Boolean.TRUE){
+							;
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()-8));
@@ -230,7 +236,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 						}
 						//Move right
-						else if(key==68){
+						else if(keyMap.get(68) == Boolean.TRUE){
+							
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()+8));
@@ -248,7 +255,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						p2.setYSpeed(10);
 					}
 					//Not touching bottom and descending from jump
-					if(!didPlayerCollidePlatformTP2() && p2.getY() == jumpY-250){
+					if(!didPlayerCollidePlatformTP2() && p2.getY() == jumpYP2-250){
 						p2.setXSpeed(0);
 						p2.setYSpeed(10);
 					}
@@ -275,7 +282,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				//Not Touching any platform
 				if(!didPlayerCollidePlatformT()){
 					//Move left
-					if(key==37){
+					if(keyMap.get(37) == Boolean.TRUE){
 						double tempX = p1.getX();
 						double tempY = p1.getY();
 						p1.setX((int) (p1.getX()-8));
@@ -292,7 +299,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 					}
 					//Move right
-					if(key==39){
+					if(keyMap.get(39) == Boolean.TRUE){
 						double tempX = p1.getX();
 						double tempY = p1.getY();
 						p1.setX((int) (p1.getX()+8));
@@ -310,13 +317,13 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				//Touching a platform
 				if(didPlayerCollidePlatformT()){
 					//Jump
-					if(key==38){
-						jumpY = p1.getY();
+					if(keyMap.get(38) == Boolean.TRUE){
+						jumpYP1 = p1.getY();
 						p1.setXSpeed(0);
 						p1.setYSpeed(-10);
 					}
 					//Move left
-					else if(key==37){
+					else if(keyMap.get(37) == Boolean.TRUE){
 						double tempX = p1.getX();
 						double tempY = p1.getY();
 						p1.setX((int) (p1.getX()-8));
@@ -330,7 +337,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 					}
 					//Move right
-					else if(key==39){
+					else if(keyMap.get(39) == Boolean.TRUE){
 						double tempX = p1.getX();
 						double tempY = p1.getY();
 						p1.setX((int) (p1.getX()+8));
@@ -348,7 +355,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 					p1.setYSpeed(10);
 				}
 				//Not touching bottom and descending from jump
-				if(!didPlayerCollidePlatformT() && p1.getY() == jumpY-250){
+				if(!didPlayerCollidePlatformT() && p1.getY() == jumpYP1-250){
 					p1.setXSpeed(0);
 					p1.setYSpeed(10);
 				}
@@ -478,13 +485,37 @@ public void gameOver(){
 
 @Override
 public void keyPressed(KeyEvent e) {
-	key = e.getKeyCode();
+	keyMap.put(e.getKeyCode(), true);
+	
+	if(e.getKeyCode() == 39){
+		keyMap.remove(38);
+		keyMap.remove(37);
+	}
+	if(e.getKeyCode() == 37){
+		keyMap.remove(39);
+		keyMap.remove(38);
+	}
+	if(e.getKeyCode() == 38){
+		keyMap.remove(39);
+		keyMap.remove(37);
+	}
+	if(e.getKeyCode() == 87){
+		keyMap.remove(65);
+		keyMap.remove(68);
+	}
+	if(e.getKeyCode() == 65){
+		keyMap.remove(68);
+		keyMap.remove(87);
+	}
+	if(e.getKeyCode() == 68){
+		keyMap.remove(87);
+		keyMap.remove(65);
+	}
 	repaint();
 }
 
 @Override
 public void keyReleased(KeyEvent e) {
-	key = 0;
 	repaint();
 }
 
