@@ -131,7 +131,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 		platforms.add(new Platform(1200, 290, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(1300, 290, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1400, 290, 0, width, 0, height, PlatformType.SOLID));
+		
 		
 
 		platforms.add(new Platform(1800, 190, 0, width, 0, height, PlatformType.MOVING));
@@ -139,24 +139,28 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		
 
 		bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
-
+		bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
+		bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
 		while (true) {
 			if(!gameOver){
 				this.requestFocus();
 				p1.getX();
 				p1.getY();
-
+				if(didPlayerCollideBonus()){
+					p1.bonus++;
+					System.out.println(p1.bonus);
+				}
 				if(didPlayerCollidePlatformB()){
-					System.out.println("B");
+					//System.out.println("B");
 				}
 				if(didPlayerCollidePlatformT()){
-					System.out.println("T");
+					//System.out.println("T");
 				}
 				if(didPlayerCollidePlatformL()){
-					System.out.println("L");
+					//System.out.println("L");
 				}
 				if(didPlayerCollidePlatformR()){
-					System.out.println("R");
+					//System.out.println("R");
 				}
 
 
@@ -286,7 +290,12 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		return true;
 	}
 	public boolean didPlayerCollideBonus(){
-		return true;
+		for(int i =0; i < bonuses.size(); i++){
+			if	((bonuses.get(i).getX() >= p1.getX() - 100 && bonuses.get(i).getX() <= p1.getX() + 100) && (bonuses.get(i).getY() >= p1.getY() - 100 && bonuses.get(i).getY() <= p1.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
 	}
 	public boolean didPlayerCollidePlatformT(){
 		for(int i =0; i < platforms.size(); i++){

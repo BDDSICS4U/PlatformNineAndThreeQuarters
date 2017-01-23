@@ -13,7 +13,7 @@ public class Player extends GamePiece {
 	private PlayerType shape;
 	private BufferedImage image1;
 	private BufferedImage image2;
-	
+	public static int bonus = 0;
 
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
@@ -37,7 +37,7 @@ public class Player extends GamePiece {
 			g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
 			g.drawImage(image1, 1790, 10, 50,50,null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString(coins+"", 1850, 45);
+			g.drawString(bonus+"", 1850, 45);
 			
 			//g.drawImage(image1.getScaledInstance(50, 50, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			// g.drawImage(image1.getScaledInstance(20, 20,

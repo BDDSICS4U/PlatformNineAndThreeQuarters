@@ -20,7 +20,7 @@ public class Bonus extends GamePiece{
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {                
-			image1 = ImageIO.read(new File(""));
+			image1 = ImageIO.read(new File("src/Pictures/Life.png"));
 			image2 = ImageIO.read(new File(""));
 
 		} catch (IOException ex) {
@@ -31,7 +31,7 @@ public class Bonus extends GamePiece{
 	public void draw(Graphics g) {
 		switch(shape){
 		case POINT:{
-			g.drawImage(image1, (int) getX(), (int) getY(), image1Height, image2Width, null);
+			g.drawImage(image1, (int) getX(), (int) getY(), 100, 100, null);
 			//g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
