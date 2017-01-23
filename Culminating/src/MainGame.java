@@ -22,6 +22,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	private long pauseDuration = 30;
 	//Player One
 	Player p1 = new Player(101, 790, 0, width, 0, height, PlayerType.PLAYER1);
+	Player p2 = new Player(201, 790, 0, width, 0, height, PlayerType.PLAYER2);
 	public static ArrayList<Platform> platforms = new ArrayList<Platform>(0);
 	public static ArrayList<Bonus> bonuses = new ArrayList<Bonus>(0);
 	public static double jumpY = 0;
@@ -123,7 +124,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		platforms.add(new Platform(1000, 690, 0, width, 0, height, PlatformType.SOLID));
 
 		platforms.add(new Platform(500, 490, 0, width, 0, height, PlatformType.SOLID));
-		
+
 		platforms.add(new Platform(800, 490, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(900, 490, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(1000, 490, 0, width, 0, height, PlatformType.SOLID));
@@ -131,12 +132,12 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 		platforms.add(new Platform(1200, 290, 0, width, 0, height, PlatformType.SOLID));
 		platforms.add(new Platform(1300, 290, 0, width, 0, height, PlatformType.SOLID));
-		
-		
+
+
 
 		platforms.add(new Platform(1800, 190, 0, width, 0, height, PlatformType.MOVING));
 		platforms.add(new Platform(1800, 290, 0, width, 0, height, PlatformType.SOLID));
-		
+
 
 		bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
 		bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
@@ -147,8 +148,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				p1.getX();
 				p1.getY();
 				if(didPlayerCollideBonus()){
-					p1.bonus++;
-					System.out.println(p1.bonus);
+					p1.bonusP1++;
+					System.out.println(p1.bonusP1);
 				}
 				if(didPlayerCollidePlatformB()){
 					//System.out.println("B");
@@ -162,194 +163,335 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				if(didPlayerCollidePlatformR()){
 					//System.out.println("R");
 				}
+				System.out.println(key);
 
 
-				if(!didPlayerCollidePlatformR() && !didPlayerCollidePlatformL()){
+				if(!didPlayerCollidePlatformRP2() && !didPlayerCollidePlatformLP2()){
 					//Touching Top of Platform
-					if(didPlayerCollidePlatformT()){
-						p1.setXSpeed(0);
-						p1.setYSpeed(0);
+					if(didPlayerCollidePlatformTP2()){
+						p2.setXSpeed(0);
+						p2.setYSpeed(0);
 					}
 					//Not Touching any platform
-					if(!didPlayerCollidePlatformT()){
+					if(!didPlayerCollidePlatformTP2()){
 						//Move left
-						if(key==37){
-							double tempX = p1.getX();
-							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()-8));
-							p1.setY((int) (p1.getY()));
+						if(key==65){
+							double tempX = p2.getX();
+							double tempY = p2.getY();
+							p2.setX((int) (p2.getX()-8));
+							p2.setY((int) (p2.getY()));
 							//If touch side of block can't move
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
-								p1.setX((int) tempX);
-								p1.setY((int) tempY);
-								p1.setXSpeed(0);
-								p1.setYSpeed(0);
+							if(didPlayerCollidePlatformRP2() || didPlayerCollidePlatformLP2() ){
+								p2.setX((int) tempX);
+								p2.setY((int) tempY);
+								p2.setXSpeed(0);
+								p2.setYSpeed(0);
 								System.out.println("yes");
 							}
-							
+
 
 						}
 						//Move right
-						if(key==39){
-							double tempX = p1.getX();
-							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()+8));
-							p1.setY((int) (p1.getY()));
+						if(key==68){
+							double tempX = p2.getX();
+							double tempY = p2.getY();
+							p2.setX((int) (p2.getX()+8));
+							p2.setY((int) (p2.getY()));
 							//If touch side of block can't move
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL()){
-								p1.setX((int) tempX);
-								p1.setY((int) tempY);
-								p1.setXSpeed(0);
-								p1.setYSpeed(0);
+							if(didPlayerCollidePlatformRP2() || didPlayerCollidePlatformLP2()){
+								p2.setX((int) tempX);
+								p2.setY((int) tempY);
+								p2.setXSpeed(0);
+								p2.setYSpeed(0);
 								System.out.println("yes");
 							}
 						}
 					}
 					//Touching a platform
-					if(didPlayerCollidePlatformT()){
+					if(didPlayerCollidePlatformTP2()){
 						//Jump
-						if(key==38){
-							jumpY = p1.getY();
-							p1.setXSpeed(0);
-							p1.setYSpeed(-10);
+						if(key==87){
+							jumpY = p2.getY();
+							p2.setXSpeed(0);
+							p2.setYSpeed(-10);
 						}
 						//Move left
-						else if(key==37){
-							double tempX = p1.getX();
-							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()-8));
-							p1.setY((int) (p1.getY()));
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
-								p1.setX((int) tempX);
-								p1.setY((int) tempY);
-								p1.setXSpeed(0);
-								p1.setYSpeed(0);
+						else if(key==65){
+							double tempX = p2.getX();
+							double tempY = p2.getY();
+							p2.setX((int) (p2.getX()-8));
+							p2.setY((int) (p2.getY()));
+							if(didPlayerCollidePlatformRP2() || didPlayerCollidePlatformLP2() ){
+								p2.setX((int) tempX);
+								p2.setY((int) tempY);
+								p2.setXSpeed(0);
+								p2.setYSpeed(0);
 							}
 
 						}
 						//Move right
-						else if(key==39){
-							double tempX = p1.getX();
-							double tempY = p1.getY();
-							p1.setX((int) (p1.getX()+8));
-							p1.setY((int) (p1.getY()));
-							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
-								p1.setX((int) tempX);
-								p1.setY((int) tempY);
-								p1.setXSpeed(0);
-								p1.setYSpeed(0);
+						else if(key==68){
+							double tempX = p2.getX();
+							double tempY = p2.getY();
+							p2.setX((int) (p2.getX()+8));
+							p2.setY((int) (p2.getY()));
+							if(didPlayerCollidePlatformRP2() || didPlayerCollidePlatformLP2() ){
+								p2.setX((int) tempX);
+								p2.setY((int) tempY);
+								p2.setXSpeed(0);
+								p2.setYSpeed(0);
 							}
 						}
 					}
 					//Not touching bottom(Falling)
-					if(!didPlayerCollidePlatformT()&& p1.getYSpeed() ==0){
-						p1.setYSpeed(10);
+					if(!didPlayerCollidePlatformTP2()&& p2.getYSpeed() ==0){
+						p2.setYSpeed(10);
 					}
 					//Not touching bottom and descending from jump
-					if(!didPlayerCollidePlatformT() && p1.getY() == jumpY-250){
-						p1.setXSpeed(0);
-						p1.setYSpeed(10);
+					if(!didPlayerCollidePlatformTP2() && p2.getY() == jumpY-250){
+						p2.setXSpeed(0);
+						p2.setYSpeed(10);
 					}
 
 
-					
+
 				}
 
-			}
-			else if(!didPlayerCollidePlatformB()){
 			
-			 p1.setXSpeed(0);
-			 p1.setYSpeed(-10);
+			else if(!didPlayerCollidePlatformBP2()){
+
+				p2.setXSpeed(0);
+				p2.setYSpeed(-10);
+			}//
+			
+
+
+			if(!didPlayerCollidePlatformR() && !didPlayerCollidePlatformL()){
+				//Touching Top of Platform
+				if(didPlayerCollidePlatformT()){
+					p1.setXSpeed(0);
+					p1.setYSpeed(0);
+				}
+				//Not Touching any platform
+				if(!didPlayerCollidePlatformT()){
+					//Move left
+					if(key==37){
+						double tempX = p1.getX();
+						double tempY = p1.getY();
+						p1.setX((int) (p1.getX()-8));
+						p1.setY((int) (p1.getY()));
+						//If touch side of block can't move
+						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
+							p1.setX((int) tempX);
+							p1.setY((int) tempY);
+							p1.setXSpeed(0);
+							p1.setYSpeed(0);
+							System.out.println("yes");
+						}
+
+
+					}
+					//Move right
+					if(key==39){
+						double tempX = p1.getX();
+						double tempY = p1.getY();
+						p1.setX((int) (p1.getX()+8));
+						p1.setY((int) (p1.getY()));
+						//If touch side of block can't move
+						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL()){
+							p1.setX((int) tempX);
+							p1.setY((int) tempY);
+							p1.setXSpeed(0);
+							p1.setYSpeed(0);
+							System.out.println("yes");
+						}
+					}
+				}
+				//Touching a platform
+				if(didPlayerCollidePlatformT()){
+					//Jump
+					if(key==38){
+						jumpY = p1.getY();
+						p1.setXSpeed(0);
+						p1.setYSpeed(-10);
+					}
+					//Move left
+					else if(key==37){
+						double tempX = p1.getX();
+						double tempY = p1.getY();
+						p1.setX((int) (p1.getX()-8));
+						p1.setY((int) (p1.getY()));
+						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
+							p1.setX((int) tempX);
+							p1.setY((int) tempY);
+							p1.setXSpeed(0);
+							p1.setYSpeed(0);
+						}
+
+					}
+					//Move right
+					else if(key==39){
+						double tempX = p1.getX();
+						double tempY = p1.getY();
+						p1.setX((int) (p1.getX()+8));
+						p1.setY((int) (p1.getY()));
+						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
+							p1.setX((int) tempX);
+							p1.setY((int) tempY);
+							p1.setXSpeed(0);
+							p1.setYSpeed(0);
+						}
+					}
+				}
+				//Not touching bottom(Falling)
+				if(!didPlayerCollidePlatformT()&& p1.getYSpeed() ==0){
+					p1.setYSpeed(10);
+				}
+				//Not touching bottom and descending from jump
+				if(!didPlayerCollidePlatformT() && p1.getY() == jumpY-250){
+					p1.setXSpeed(0);
+					p1.setYSpeed(10);
+				}
+
+
+
 			}
-			repaint();
-			try{
-				Thread.sleep(pauseDuration);
-			} catch(InterruptedException e){
-			}
 
 		}
-	}
+		else if(!didPlayerCollidePlatformB()){
 
-	private void resetLevel() {
+			p1.setXSpeed(0);
+			p1.setYSpeed(-10);
+		}
 
-	}
-
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		p1.draw(g);
-		for(int i =0; i < platforms.size(); i++){
-			platforms.get(i).draw(g);
-		}
-		for(int i =0; i < bonuses.size(); i++){
-			bonuses.get(i).draw(g);
-		}
-	}
-
-
-	public boolean didPlayerCollideEnemy(){
-		return true;
-	}
-	public boolean didPlayerCollideBonus(){
-		for(int i =0; i < bonuses.size(); i++){
-			if	((bonuses.get(i).getX() >= p1.getX() - 100 && bonuses.get(i).getX() <= p1.getX() + 100) && (bonuses.get(i).getY() >= p1.getY() - 100 && bonuses.get(i).getY() <= p1.getY() + 100)){
-				return true;
-			}
-		}
-		return false;
-	}
-	public boolean didPlayerCollidePlatformT(){
-		for(int i =0; i < platforms.size(); i++){
-			if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY()+ 100)){
-				return true;
-			}
-		}
-		return false;
-	}
-	public boolean didPlayerCollidePlatformB(){
-		for(int i =0; i < platforms.size(); i++){
-			if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY() -100 )){
-				return true;
-			}
-		}
-		return false;
-	}
-	public boolean didPlayerCollidePlatformL(){
-		for(int i =0; i < platforms.size(); i++){
-			if	((platforms.get(i).getX() == p1.getX() + 100 ) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
-				return true;
-			}
-		}
-		return false;
-	}
-	public boolean didPlayerCollidePlatformR(){
-		for(int i =0; i < platforms.size(); i++){
-			if	((platforms.get(i).getX() == p1.getX() -100) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public void gameOver(){
-		gameOver = true;
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		key = e.getKeyCode();
 		repaint();
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		key = 0;
-		repaint();
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		try{
+			Thread.sleep(pauseDuration);
+		} catch(InterruptedException e){
+		}
 
 	}
+}
+
+private void resetLevel() {
+
+}
+
+public void paintComponent(Graphics g) {
+	super.paintComponent(g);
+	p1.draw(g);
+	p2.draw(g);
+	for(int i =0; i < platforms.size(); i++){
+		platforms.get(i).draw(g);
+	}
+	for(int i =0; i < bonuses.size(); i++){
+		bonuses.get(i).draw(g);
+	}
+}
+
+
+public boolean didPlayerCollideEnemy(){
+	return true;
+}
+public boolean didPlayerCollideBonus(){
+	for(int i =0; i < bonuses.size(); i++){
+		if	((bonuses.get(i).getX() >= p1.getX() - 100 && bonuses.get(i).getX() <= p1.getX() + 100) && (bonuses.get(i).getY() >= p1.getY() - 100 && bonuses.get(i).getY() <= p1.getY() + 100)){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformT(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY()+ 100)){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformB(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY() -100 )){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformL(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() == p1.getX() + 100 ) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformR(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() == p1.getX() -100) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+public boolean didPlayerCollidePlatformTP2(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY()+ 100)){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformBP2(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY() -100 )){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformLP2(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() == p2.getX() + 100 ) && (platforms.get(i).getY() >= p2.getY() - 100 && platforms.get(i).getY() <= p2.getY() + 100)){
+			return true;
+		}
+	}
+	return false;
+}
+public boolean didPlayerCollidePlatformRP2(){
+	for(int i =0; i < platforms.size(); i++){
+		if	((platforms.get(i).getX() == p2.getX() -100) && (platforms.get(i).getY() >= p2.getY() - 100 && platforms.get(i).getY() <= p2.getY() + 100)){
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+
+public void gameOver(){
+	gameOver = true;
+}
+
+@Override
+public void keyPressed(KeyEvent e) {
+	key = e.getKeyCode();
+	repaint();
+}
+
+@Override
+public void keyReleased(KeyEvent e) {
+	key = 0;
+	repaint();
+}
+
+@Override
+public void keyTyped(KeyEvent e) {
+	// TODO Auto-generated method stub
+
+}
 
 }

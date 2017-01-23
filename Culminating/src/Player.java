@@ -13,8 +13,8 @@ public class Player extends GamePiece {
 	private PlayerType shape;
 	private BufferedImage image1;
 	private BufferedImage image2;
-	public static int bonus = 0;
-
+	public static int bonusP1 = 0;
+	public static int bonusP2 = 0;
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
 		
@@ -23,7 +23,7 @@ public class Player extends GamePiece {
 		this.coins = 0;
 		try {
 			image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
-			image2 = ImageIO.read(new File("src/resources/Smiley.svg.png"));
+			image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
 
 		} catch (IOException ex) {
 			System.out.println("No Images");
@@ -37,7 +37,7 @@ public class Player extends GamePiece {
 			g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
 			g.drawImage(image1, 1790, 10, 50,50,null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString(bonus+"", 1850, 45);
+			g.drawString(bonusP1+"", 1850, 45);
 			
 			//g.drawImage(image1.getScaledInstance(50, 50, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			// g.drawImage(image1.getScaledInstance(20, 20,
@@ -45,9 +45,10 @@ public class Player extends GamePiece {
 			break;
 		}
 		case PLAYER2: {
-			if(displayed){
-				g.drawImage(image2, (int) getX(), (int) getY(), 200,200, null);
-			}
+			g.drawImage(image2, (int) getX(), (int) getY(), 100,100, null);
+			g.drawImage(image2, 1790, 70, 50,50,null);
+			g.setFont(new Font("SansSerif",Font.BOLD,25));
+			g.drawString(bonusP2+"", 1850, 45);
 			// g.drawImage(image2.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
