@@ -1,4 +1,10 @@
-
+/**
+ * PlayerSelect.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -14,6 +20,25 @@ public class PlayerSelect extends GamePiece {
 	private BufferedImage image3;
 	private BufferedImage image4;
 	public static boolean visible = true;
+	
+	/**
+	 * PlayerSelect constructor
+	 * 
+	 * @param x
+	 * 			double - the x value
+	 * @param y
+	 * 			double - the y value
+	 * @param left
+	 * 			int - the left side x parameter of the screen 
+	 * @param right
+	 * 			int - the right side x parameter of the screen
+	 * @param top
+	 * 			int - the top side y parameter of the screen
+	 * @param bottom
+	 * 			int - the top side y parameter of the screen
+	 * @param shape
+	 * 			PlayerType - the enum for what player number it is
+	 */
 	public PlayerSelect(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -28,6 +53,12 @@ public class PlayerSelect extends GamePiece {
 		}
 	}
 
+	/**
+	 * This method draws the current player select screen
+	 * 
+	 * @param g 
+	 * 				Graphics - The graphics object that needs to be passed through
+	 */
 	public void draw(Graphics g) {
 		if(visible){
 			g.drawImage(image1, 120, 300, 300,300, null);
@@ -52,7 +83,9 @@ public class PlayerSelect extends GamePiece {
 	}
 	
 	
-
+	/**
+	 * Blank Method
+	 */
 	public void animateOneStep() {
 	}
 	

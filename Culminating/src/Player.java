@@ -1,10 +1,11 @@
 /**
- * Culmanating.java
+ * Player.java
  * @version 2017/01/24
  * @author Daniel Nucci
  * @author Stuart Dietrich
  * @author Brendan Russell
  */
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -33,11 +34,15 @@ public class Player extends GamePiece {
 	 * @param y
 	 * 			double - the y value
 	 * @param left
-	 * 			int - the left side parameter of the screen 
+	 * 			int - the left side x parameter of the screen 
 	 * @param right
+	 * 			int - the right side x parameter of the screen
 	 * @param top
+	 * 			int - the top side y parameter of the screen
 	 * @param bottom
+	 * 			int - the top side y parameter of the screen
 	 * @param shape
+	 * 			PlayerType - the enum for what player number it is
 	 */
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
