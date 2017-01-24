@@ -171,19 +171,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			break;
 		}
 		case LEVEL3:{
-			p1.spawnPlayer(101, 790);
-			p2.spawnPlayer(201, 790);
-			platforms.clear();
-			bonuses.clear();
-			
-			makeBasicStartingPosition();
-			
-			
-			
-			
-			end.setX(width-100);
-			end.setY(100);
-			
 			break;
 		}
 		case LEVEL4:{
@@ -527,7 +514,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			bonuses.get(i).draw(g);
 		}
 	}
-
 
 	public boolean didPlayerCollideEnemy(){
 		return true;
