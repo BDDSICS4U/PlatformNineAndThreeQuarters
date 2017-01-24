@@ -31,6 +31,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public static int key;
 	Player p1 = new Player(101, 790, 0, width, 0, height, PlayerType.PLAYER1);
 	Player p2 = new Player(201, 790, 0, width, 0, height, PlayerType.PLAYER2);
+	public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	public static ArrayList<Platform> platforms = new ArrayList<Platform>(0);
 	public static ArrayList<Bonus> bonuses = new ArrayList<Bonus>(0);
 	public static Platform end = new Platform(0, 0, 0, width, 0, height, PlatformType.END);
@@ -140,6 +141,20 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			makePlatform(1200, 290);
 			makePlatform(1300, 290);
 
+			for(int i=0; i<3; i++){
+				Platform temp = platforms.get((int) (Math.random() * platforms.size()));
+				while(temp.getX()<=100){
+					temp = platforms.get((int) (Math.random() * platforms.size()));
+				}
+				
+				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()){
+					System.out.println("hit");
+					enemies.remove(enemies.size()-1);
+					i--;
+				}
+			}
+
 			end.setX(1800);
 			end.setY(290);
 
@@ -155,6 +170,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p2.spawnPlayer(201, 790);
 			platforms.clear();
 			bonuses.clear();
+			enemies.clear();
 			
 			makeBasicStartingPosition();
 			
@@ -552,6 +568,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		p1.draw(g);
 		p2.draw(g);
 		end.draw(g);
+		for(int i =0; i < enemies.size(); i++){
+			enemies.get(i).draw(g);
+		}
 		for(int i =0; i < platforms.size(); i++){
 			platforms.get(i).draw(g);
 		}
@@ -559,9 +578,40 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			bonuses.get(i).draw(g);
 		}
 	}
+	
+	public boolean isPlatformNextLeft(Enemy e){
+		for(int i=0; i<platforms.size(); i++){
+			if(platforms.get(i).getX()==e.getX()-100){
+				
+			}
+		}
+		return false;
+	}
 
+	public boolean didEnemyCollidePlatformB(Enemy e){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() >= e.getX() - 100 && platforms.get(i).getX() <= e.getX() + 100) && (platforms.get(i).getY() == e.getY() -100 )){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public boolean didPlayerCollideEnemy(){
-		return true;
+		for(int i =0; i < enemies.size(); i++){
+			if	((enemies.get(i).getX() >= p1.getX() - 100 && enemies.get(i).getX() <= p1.getX() + 100) && (enemies.get(i).getY() >= p1.getY() - 100 && enemies.get(i).getY() <= p1.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollideEnemyP2(){
+		for(int i =0; i < enemies.size(); i++){
+			if	((enemies.get(i).getX() >= p2.getX() - 100 && enemies.get(i).getX() <= p2.getX() + 100) && (enemies.get(i).getY() >= p2.getY() - 100 && enemies.get(i).getY() <= p2.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
 	}
 	public boolean didPlayerCollideEndP1(){
 		if	((end.getX() >= p1.getX() - 100 && end.getX() <= p1.getX() + 100) && (end.getY() >= p1.getY() - 100 && end.getY() <= p1.getY() + 100)){
