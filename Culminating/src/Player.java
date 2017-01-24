@@ -18,49 +18,141 @@ public class Player extends GamePiece {
 	public static int bonusP2 = 0;
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
-		
+		try {
+			P1Character choice = MainGame.p1Char;
+			switch(choice){
+			case PIG:{
+				image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+				break;
+			}
+			case LION:{
+				image1 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+				break;
+			}
+			case SHARK:{
+				System.out.println("shark");
+				image1 = ImageIO.read(new File("src/Pictures/Shark.png"));
+				break;
+			}
+			case PENGUIN:{
+				image1 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+				break;
+			}
+			}}
+		catch (IOException ex) {
+			System.out.println("No Images");
+		}
+
+		try {
+			P2Character choice = MainGame.p2Char;
+			switch(choice){
+			case PIG:{
+				System.out.println("pig");
+				image2 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+				break;
+			}
+			case LION:{
+				image2 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+				break;
+			}
+			case SHARK:{
+				image2 = ImageIO.read(new File("src/Pictures/Shark.png"));
+				break;
+			}
+			case PENGUIN:{
+				image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+				break;
+			}
+
+
+			} 
+		}catch (IOException ex) {
+			System.out.println("No Images");
+		}
+
+
+
 		this.shape = shape;
 		setHP(3);
 		this.coins = 0;
-		try {
-			image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
-			image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
-
-		} catch (IOException ex) {
-			System.out.println("No Images");
-		}
 	}
 
 	public void draw(Graphics g) {
 		switch (shape) {
 		case PLAYER1: {
 			if(visible){
-			g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
-			g.drawImage(image1, 1790, 10, 50,50,null);
-			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString(bonusP1+"", 1850, 45);
-			
-			//g.drawImage(image1.getScaledInstance(50, 50, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
-			// g.drawImage(image1.getScaledInstance(20, 20,
-			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+				try {
+					P1Character choice = MainGame.p1Char;
+					switch(choice){
+					case PIG:{
+						image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+						break;
+					}
+					case LION:{
+						image1 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+						break;
+					}
+					case SHARK:{
+						System.out.println("shark");
+						image1 = ImageIO.read(new File("src/Pictures/Shark.png"));
+						break;
+					}
+					case PENGUIN:{
+						image1 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+						break;
+					}
+					}}
+				catch (IOException ex) {
+					System.out.println("No Images");
+				}
+				g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
+				g.drawImage(image1, 1790, 10, 50,50,null);
+				g.setFont(new Font("SansSerif",Font.BOLD,25));
+				g.drawString(bonusP1+"", 1850, 45);
+
 			}
 			break;
 		}
 		case PLAYER2: {
 			if(visible){
-			g.drawImage(image2, (int) getX(), (int) getY(), 100,100, null);
-			g.drawImage(image2, 1790, 70, 50,50,null);
-			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString(bonusP2+"", 1850, 45);
-			// g.drawImage(image2.getScaledInstance(20, 20,
-			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+				try {
+					P2Character choice = MainGame.p2Char;
+					switch(choice){
+					case PIG:{
+						System.out.println("pig");
+						image2 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+						break;
+					}
+					case LION:{
+						image2 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+						break;
+					}
+					case SHARK:{
+						image2 = ImageIO.read(new File("src/Pictures/Shark.png"));
+						break;
+					}
+					case PENGUIN:{
+						image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+						break;
+					}
+
+
+					} 
+				}catch (IOException ex) {
+					System.out.println("No Images");
+				}
+				g.drawImage(image2, (int) getX(), (int) getY(), 100,100, null);
+				g.drawImage(image2, 1790, 70, 50,50,null);
+				g.setFont(new Font("SansSerif",Font.BOLD,25));
+				g.drawString(bonusP2+"", 1850, 45);
+
 			}
 			break;
 		}
 		}
 
 	}
-	
+
 	public void setVisibility(boolean visible){
 		this.displayed = visible;
 	}
@@ -75,13 +167,13 @@ public class Player extends GamePiece {
 	public int getHP() {
 		return this.hp;
 	}
-	
+
 	public void setCoins(int coin){
 		this.coins = coin;
 	}
 	public void addCoins(int coin){
 		this.coins+=coin;
 	}
-	
+
 
 }

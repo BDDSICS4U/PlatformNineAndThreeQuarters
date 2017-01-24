@@ -12,7 +12,7 @@ public class Platform extends GamePiece{
 	private Image image1;
 	private Image image2;
 	private Image image3;
-
+public boolean visible = true;
 	public Platform(double x, double y, int left, int right, int top, int bottom, PlatformType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -35,9 +35,12 @@ public class Platform extends GamePiece{
 			break;
 		}
 		case END:{
+			if(visible){
 			g.drawImage(image2, (int) getX(), (int) getY(), 100, 100, null);
 			//g.drawImage(image1.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			}
 			break;
+			
 		}
 		
 		}

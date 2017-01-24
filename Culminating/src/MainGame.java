@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,7 +15,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 
-public class MainGame extends JPanel implements Runnable, KeyListener {
+public class MainGame extends JPanel implements Runnable, KeyListener, MouseListener {
 	HashMap<Integer,Boolean> keyMap = new HashMap<Integer,Boolean>();
 	public static Level currentLevel = Level.START;
 	private boolean gameOver = false;
@@ -22,6 +24,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	private static final int height = 990;
 	private long pauseDuration = 30;
 	//Player One
+
+	public static P1Character p1Char = P1Character.PENGUIN;
+	public static P2Character p2Char = P2Character.PIG;
+	public static int key;
 	Player p1 = new Player(101, 790, 0, width, 0, height, PlayerType.PLAYER1);
 	Player p2 = new Player(201, 790, 0, width, 0, height, PlayerType.PLAYER2);
 	public static ArrayList<Platform> platforms = new ArrayList<Platform>(0);
@@ -31,12 +37,16 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	public static double jumpYP2 = 0;
 	public static int counter = 0;
 	public static PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
+
 	public void setup(){
 		switch(currentLevel){
 		case START:{
+			platforms.clear();
+			bonuses.clear();
 			p1.visible = false;
 			p2.visible = false;
 			playerPick.visible = true;
+			end.visible = false;
 			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
@@ -95,11 +105,67 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 			platforms.add(new Platform(1820, 190, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(1820, 90, 0, width, 0, height, PlatformType.SOLID));
 			//PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
+			repaint();
+			while(true){
+				//System.out.println("in");
+				System.out.println(mouseX);
+				System.out.println(mouseY);
+				if(mouseX >= 120 && mouseX <= 420 && mouseY >= 300 && mouseY <= 600){
+					p1Char = P1Character.PIG;
+					System.out.println("Click");
+					break;
+				}
+				else if(mouseX >= 520 && mouseX <= 820 && mouseY >= 300 && mouseY <= 600){
+					p1Char = P1Character.PENGUIN;
+					System.out.println("Click");
+					break;
+				}
+				else if(mouseX >= 1100 && mouseX <= 1400 && mouseY >= 300 && mouseY <= 600){
+					p1Char = P1Character.LION;
+					System.out.println("Click");
+					break;
+				}
+				else if(mouseX >= 1500 && mouseX <= 1800 && mouseY >= 300 && mouseY <= 600){
+					p1Char = P1Character.SHARK;
+					System.out.println("Click");
+					break;
+				}
+			}
+			while(true){
+				System.out.println("in");
+				if(mouseX >= 120 && mouseX <= 420 && mouseY >= 300 && mouseY <= 600){
+					if(p1Char != P1Character.PIG){
+						p2Char = P2Character.PIG;
+						System.out.println("Click");
+						break;}
+				}
+				else if(mouseX >= 520 && mouseX <= 820 && mouseY >= 300 && mouseY <= 600){
+					if(p1Char != P1Character.PENGUIN){
+						p2Char = P2Character.PENGUIN;
+						System.out.println("Click");
+						break;}
+				}
+				else if(mouseX >= 1100 && mouseX <= 1400 && mouseY >= 300 && mouseY <= 600){
+					if(p1Char != P1Character.LION){
+						p2Char = P2Character.LION;
+						System.out.println("Click");
+						break;}
+				}
+				else if(mouseX >= 1500 && mouseX <= 1800 && mouseY >= 300 && mouseY <= 600){
+					if(p1Char != P1Character.SHARK){
+						p2Char = P2Character.SHARK;
+						System.out.println("Click");
+						break;}
+				}
+			}
+			currentLevel = Level.LEVEL1;
+			System.out.println("Out");
 			break;
 		}
 		case LEVEL1:{
 			p2.visible = true;
 			p1.visible = true;
+			end.visible = true;
 			playerPick.visible = false;
 			platforms.clear();
 			bonuses.clear();
@@ -154,10 +220,11 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 			end.setX(1800);
 			end.setY(290);
-			
+
 			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
 			bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
 			bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
+
 			break;
 		}
 		case LEVEL2:{
@@ -197,12 +264,12 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
-			
+
 			platforms.add(new Platform(300, 590, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(400, 590, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(700, 390, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(1500, 590, 0, width, 0, height, PlatformType.SOLID));
-			
+
 			end.setX(1800);
 			end.setY(390);
 			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
@@ -219,12 +286,13 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 			break;
 		}
 		}
-		p1.setVisibility(true);
+
 
 	}
-	private static JFrame frame = new JFrame();
-	private static Container c = frame.getContentPane();
+
 	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+
 		frame.setSize(width,height);
 		frame.setFont(new Font("System", Font.ROMAN_BASELINE, 14));
 		String space ="";
@@ -236,6 +304,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		frame.setSize(new Dimension(width, height));
 		frame.setAutoRequestFocus(false);
 		frame.setVisible(true);
+		Container c = frame.getContentPane();
 		//Container c = frame.getContentPane();
 		c.add(new MainGame());
 		frame.pack();
@@ -246,17 +315,19 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		this.setPreferredSize(new Dimension(width, height));
 		this.setBackground(background);
 		addKeyListener(this);
+		addMouseListener(this);
 		Thread gameThread = new Thread(this);
 		gameThread.start();
-		setup();
+
 
 	}
 	public void run() {
-		
-		while (true) {
 		setup();
-		
-			//	if(!gameOver){
+		setup();
+
+		while (true) {
+			if(currentLevel != Level.START){
+				//	if(!gameOver){
 				if(didPlayerCollideEndP1()){
 					counter++;
 					if (counter == 0){
@@ -512,13 +583,13 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 				}
 
-			//}
-			else if(!didPlayerCollidePlatformB()){
+				//}
+				else if(!didPlayerCollidePlatformB()){
 
-				p1.setXSpeed(0);
-				p1.setYSpeed(-10);
+					p1.setXSpeed(0);
+					p1.setYSpeed(-10);
+				}
 			}
-
 			repaint();
 			try{
 				Thread.sleep(pauseDuration);
@@ -647,6 +718,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		key = e.getKeyCode();
+		//System.out.println(e.getKeyCode());
 		keyMap.put(e.getKeyCode(), true);
 
 		if(e.getKeyCode() == 39){
@@ -680,33 +753,68 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == 39){
 			keyMap.remove(39);
-			
+
 		}
 		if(e.getKeyCode() == 37){
 			keyMap.remove(37);
-			
+
 		}
 		if(e.getKeyCode() == 38){
 			keyMap.remove(38);
-			
+
 		}
 		if(e.getKeyCode() == 87){
 			keyMap.remove(87);
-		
+
 		}
 		if(e.getKeyCode() == 65){
 			keyMap.remove(65);
-			
+
 		}
 		if(e.getKeyCode() == 68){
 			keyMap.remove(68);
-			
+
 		}
 		repaint();
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+
+	public static int mouseY = 0;
+	public static int mouseX =0;
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		mouseX=e.getX();
+		mouseY=e.getY();
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}

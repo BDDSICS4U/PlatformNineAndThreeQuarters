@@ -47,7 +47,7 @@ public class PlayerSelect extends GamePiece {
 			g.drawString("Shark (4)", 1600, 250);
 			
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString("Player 1, Type: 1, 2, or, 3", 780, 850);
+			g.drawString("Select two Characters", 780, 850);
 		}
 	}
 	
