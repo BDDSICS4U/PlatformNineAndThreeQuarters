@@ -123,10 +123,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p1.visible = true;
 			end.visible = true;
 			playerPick.visible = false;
-			p1.setX(101);
-			p1.setY(790);
-			p2.setX(201);
-			p2.setY(790);
+			p1.spawnPlayer(101, 790);
+			p2.spawnPlayer(201, 790);
 			platforms.clear();
 			bonuses.clear();
 			
@@ -153,10 +151,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		}
 		case LEVEL2:{
 			//c.setBackground(Color.BLACK);
-			p1.setX(101);
-			p1.setY(790);
-			p2.setX(201);
-			p2.setY(790);
+			p1.spawnPlayer(101, 790);
+			p2.spawnPlayer(201, 790);
 			platforms.clear();
 			bonuses.clear();
 			
@@ -175,10 +171,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			break;
 		}
 		case LEVEL3:{
-			p1.setX(101);
-			p1.setY(790);
-			p2.setX(201);
-			p2.setY(790);
+			p1.spawnPlayer(101, 790);
+			p2.spawnPlayer(201, 790);
 			platforms.clear();
 			bonuses.clear();
 			
@@ -599,8 +593,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		return false;
 	}
 
-
-
 	public boolean didPlayerCollidePlatformTP2(){
 		for(int i =0; i < platforms.size(); i++){
 			if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY()+ 100)){
@@ -633,9 +625,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		}
 		return false;
 	}
-
-
-
 
 	public void gameOver(){
 		gameOver = true;
@@ -703,9 +692,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 
 	}
 
-
 	public static int mouseY = 0;
-	public static int mouseX =0;
+	public static int mouseX = 0;
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		mouseX=e.getX();
@@ -735,6 +723,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public static void makePlatform(double x, double y){
 		platforms.add(new Platform(x, y, 0, width, 0, height, PlatformType.SOLID));
 	}
+	
 	public static void makeBasicStartingPosition(){
 		makePlatform(0, -10);
 		for (int i = 0; i < 1900; i+= 100){

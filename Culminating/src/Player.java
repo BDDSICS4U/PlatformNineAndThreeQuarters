@@ -175,8 +175,16 @@ public class Player extends GamePiece {
 	public void setCoins(int coin){
 		this.coins = coin;
 	}
+	
 	public void addCoins(int coin){
 		this.coins+=coin;
+	}
+	
+	public void spawnPlayer(int x, int y){
+		setXSpeed(0);
+		setYSpeed(0);
+		setX(x);
+		setY(y);
 	}
 
 
