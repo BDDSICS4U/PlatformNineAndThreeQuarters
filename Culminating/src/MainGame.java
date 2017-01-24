@@ -677,30 +677,25 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode() == 39){
-			keyMap.remove(39);
-
-		}
-		if(e.getKeyCode() == 37){
-			keyMap.remove(37);
-
-		}
-		if(e.getKeyCode() == 38){
-			keyMap.remove(38);
-
-		}
-		if(e.getKeyCode() == 87){
-			keyMap.remove(87);
-
-		}
-		if(e.getKeyCode() == 65){
-			keyMap.remove(65);
-
-		}
-		if(e.getKeyCode() == 68){
-			keyMap.remove(68);
-
-		}
+		keyMap.remove(e.getKeyCode());
+//		if(e.getKeyCode() == 39){
+//			keyMap.remove(39);	
+//		}
+//		if(e.getKeyCode() == 37){
+//			keyMap.remove(37);
+//		}
+//		if(e.getKeyCode() == 38){
+//			keyMap.remove(38);
+//		}
+//		if(e.getKeyCode() == 87){
+//			keyMap.remove(87);
+//		}
+//		if(e.getKeyCode() == 65){
+//			keyMap.remove(65);
+//		}
+//		if(e.getKeyCode() == 68){
+//			keyMap.remove(68);
+//		}
 		repaint();
 	}
 
