@@ -280,7 +280,44 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			break;
 		}
 		case LEVEL3:{
-
+			platforms.clear();
+			bonuses.clear();
+			p1.setX(101);
+			p1.setY(790);
+			p2.setX(201);
+			p2.setY(790);
+			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
+			
+			
+			
 			break;
 		}
 		case LEVEL4:{
