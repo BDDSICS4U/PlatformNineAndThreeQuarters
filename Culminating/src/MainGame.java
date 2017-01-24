@@ -155,13 +155,15 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				
 			}
 			for(int i=0; i<3; i++){
-				int chance = (int) (Math.random() * 100);
+				/*int chance = (int) (Math.random() * 100);
 				if(chance>50){
 					enemies.get(enemies.size()-1).setXSpeed(1.5);
 				}
 				else{
 					enemies.get(enemies.size()-1).setXSpeed(-1.5);
 				}
+				*/
+				enemies.get(i).setXSpeed(1.5);
 			}
 			
 
@@ -577,7 +579,16 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					}
 
 
-
+					for(int i = 0; i < enemies.size(); i++){
+						if((enemies.get(i).getXSpeed()>0)&&!isPlatformNextRight(enemies.get(i))){
+							enemies.get(i).setX((int) enemies.get(i).getX()-10);
+							enemies.get(i).setXSpeed(enemies.get(i).getXSpeed()*-1);
+						}
+						if((enemies.get(i).getXSpeed()<0)&&!isPlatformNextLeft(enemies.get(i))){
+							enemies.get(i).setX((int) enemies.get(i).getX()+10);
+							enemies.get(i).setXSpeed(enemies.get(i).getXSpeed()*-1);
+						}
+					}
 				}
 
 				//}
@@ -586,14 +597,14 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					p1.setXSpeed(0);
 					p1.setYSpeed(-10);
 				}
-				for(int i = 0; i < enemies.size(); i++){
-					if((enemies.get(i).getXSpeed()>0)&&!isPlatformNextRight(enemies.get(i))){
-						enemies.get(i).setXSpeed(-1.5);
-					}
-					if((enemies.get(i).getXSpeed()<0)&&!isPlatformNextLeft(enemies.get(i))){
-						enemies.get(i).setXSpeed(1.5);
-					}
-				}
+				//for(int i = 0; i < enemies.size(); i++){
+					//if((enemies.get(i).getXSpeed()>0)&&!isPlatformNextRight(enemies.get(i))){
+						//enemies.get(i).setXSpeed(-1.5);
+					//}
+					//if((enemies.get(i).getXSpeed()<0)&&!isPlatformNextLeft(enemies.get(i))){
+						//enemies.get(i).setXSpeed(1.5);
+					//}
+				//}
 			}
 			repaint();
 			try{
@@ -627,7 +638,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	
 	public boolean isPlatformNextLeft(Enemy e){
 		for(int i=0; i<platforms.size(); i++){
-			if(platforms.get(i).getX()==e.getX()-100&&platforms.get(i).getY()==e.getY()+100){
+			if((platforms.get(i).getX()==e.getX()-110)&&(platforms.get(i).getY()==e.getY()+100)){
 				return true;
 			}
 		}
@@ -635,7 +646,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	}
 	public boolean isPlatformNextRight(Enemy e){
 		for(int i=0; i<platforms.size(); i++){
-			if(platforms.get(i).getX()==e.getX()+100&&platforms.get(i).getY()==e.getY()+100){
+			if(platforms.get(i).getX()==e.getX()+110&&platforms.get(i).getY()==e.getY()+100){
 				return true;
 			}
 		}
