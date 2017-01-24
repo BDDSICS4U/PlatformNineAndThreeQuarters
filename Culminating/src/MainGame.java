@@ -147,23 +147,11 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					temp = platforms.get((int) (Math.random() * platforms.size()));
 				}
 				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
-				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))&&!isPlatformNextRight(enemies.get(enemies.size()-1)))){
-					System.out.println("hit");
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))||!isPlatformNextRight(enemies.get(enemies.size()-1)))){
 					enemies.remove(enemies.size()-1);
 					i--;
 				}
 				
-			}
-			for(int i=0; i<3; i++){
-				/*int chance = (int) (Math.random() * 100);
-				if(chance>50){
-					enemies.get(enemies.size()-1).setXSpeed(1.5);
-				}
-				else{
-					enemies.get(enemies.size()-1).setXSpeed(-1.5);
-				}
-				*/
-				enemies.get(i).setXSpeed(1.5);
 			}
 			
 
@@ -197,8 +185,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					temp = platforms.get((int) (Math.random() * platforms.size()));
 				}
 				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
-				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))&&!isPlatformNextRight(enemies.get(enemies.size()-1)))){
-					System.out.println("hit");
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))||!isPlatformNextRight(enemies.get(enemies.size()-1)))){
 					enemies.remove(enemies.size()-1);
 					i--;
 				}	
@@ -231,8 +218,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					temp = platforms.get((int) (Math.random() * platforms.size()));
 				}
 				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
-				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))&&!isPlatformNextRight(enemies.get(enemies.size()-1)))){
-					System.out.println("hit");
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))||!isPlatformNextRight(enemies.get(enemies.size()-1)))){
 					enemies.remove(enemies.size()-1);
 					i--;
 				}	
@@ -579,16 +565,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					}
 
 
-					for(int i = 0; i < enemies.size(); i++){
-						if((enemies.get(i).getXSpeed()>0)&&!isPlatformNextRight(enemies.get(i))){
-							enemies.get(i).setX((int) enemies.get(i).getX()-10);
-							enemies.get(i).setXSpeed(enemies.get(i).getXSpeed()*-1);
-						}
-						if((enemies.get(i).getXSpeed()<0)&&!isPlatformNextLeft(enemies.get(i))){
-							enemies.get(i).setX((int) enemies.get(i).getX()+10);
-							enemies.get(i).setXSpeed(enemies.get(i).getXSpeed()*-1);
-						}
-					}
+					
 				}
 
 				//}
@@ -605,6 +582,12 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 						//enemies.get(i).setXSpeed(1.5);
 					//}
 				//}
+				if(didPlayerCollideEnemy()){
+					p1.spawnPlayer(101, 790);
+				}
+				if(didPlayerCollideEnemyP2()){
+					p2.spawnPlayer(101, 790);
+				}
 			}
 			repaint();
 			try{
@@ -638,7 +621,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	
 	public boolean isPlatformNextLeft(Enemy e){
 		for(int i=0; i<platforms.size(); i++){
-			if((platforms.get(i).getX()==e.getX()-110)&&(platforms.get(i).getY()==e.getY()+100)){
+			if((platforms.get(i).getX()==e.getX()-100)&&(platforms.get(i).getY()==e.getY()+100)){
 				return true;
 			}
 		}
@@ -646,7 +629,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	}
 	public boolean isPlatformNextRight(Enemy e){
 		for(int i=0; i<platforms.size(); i++){
-			if(platforms.get(i).getX()==e.getX()+110&&platforms.get(i).getY()==e.getY()+100){
+			if(platforms.get(i).getX()==e.getX()+100&&platforms.get(i).getY()==e.getY()+100){
 				return true;
 			}
 		}
