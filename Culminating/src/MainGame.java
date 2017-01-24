@@ -49,63 +49,17 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p2.visible = false;
 			playerPick.visible = true;
 			end.visible = false;
-			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(100, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(200, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(300, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(600, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1100, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1200, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1300, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1400, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1500, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1600, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1700, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1800, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1900, 0, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 790, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 390, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 290, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 190, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1820, 90, 0, width, 0, height, PlatformType.SOLID));
+			
+			//a square around the border of the frame
+			for (int i = 0; i < 1900; i+= 100){
+				makePlatform(i, 890);
+				makePlatform(i, 0);
+			}
+			for (int i = 90; i < 800; i+= 100){
+				makePlatform(0, i);
+				makePlatform(1800, i);
+			}
+
 			//PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
 			repaint();
 			while(true){
@@ -169,41 +123,15 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p1.visible = true;
 			end.visible = true;
 			playerPick.visible = false;
-			platforms.clear();
-			bonuses.clear();
 			p1.setX(101);
 			p1.setY(790);
 			p2.setX(201);
 			p2.setY(790);
-			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
+			platforms.clear();
+			bonuses.clear();
+			
+			makeBasicStartingPosition();
+
 			platforms.add(new Platform(300, 690, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(400, 690, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(500, 690, 0, width, 0, height, PlatformType.SOLID));
@@ -231,41 +159,16 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		}
 		case LEVEL2:{
 			//c.setBackground(Color.BLACK);
-			platforms.clear();
-			bonuses.clear();
 			p1.setX(101);
 			p1.setY(790);
 			p2.setX(201);
 			p2.setY(790);
-			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
+			platforms.clear();
+			bonuses.clear();
+			
+			
+			makeBasicStartingPosition();
+			
 
 			platforms.add(new Platform(300, 590, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(400, 590, 0, width, 0, height, PlatformType.SOLID));
@@ -280,41 +183,16 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			break;
 		}
 		case LEVEL3:{
-			platforms.clear();
-			bonuses.clear();
 			p1.setX(101);
 			p1.setY(790);
 			p2.setX(201);
 			p2.setY(790);
-			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
+			platforms.clear();
+			bonuses.clear();
+			
+			makeBasicStartingPosition();
+			
+			
 			
 			
 			
@@ -871,6 +749,19 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public static void makePlatform(double x, double y){
+		platforms.add(new Platform(x, y, 0, width, 0, height, PlatformType.SOLID));
+	}
+	public static void makeBasicStartingPosition(){
+		makePlatform(0, -10);
+		for (int i = 0; i < 1900; i+= 100){
+			makePlatform(i, 890);
+		}
+		for (int i = 90; i < 900; i+= 100){
+			makePlatform(0, i);
+		}
 	}
 
 }
