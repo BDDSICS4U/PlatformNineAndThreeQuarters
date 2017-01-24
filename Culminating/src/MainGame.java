@@ -146,14 +146,24 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				while(temp.getX()<=100){
 					temp = platforms.get((int) (Math.random() * platforms.size()));
 				}
-				
 				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
-				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()){
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))&&!isPlatformNextRight(enemies.get(enemies.size()-1)))){
 					System.out.println("hit");
 					enemies.remove(enemies.size()-1);
 					i--;
 				}
+				
 			}
+			for(int i=0; i<3; i++){
+				int chance = (int) (Math.random() * 100);
+				if(chance>50){
+					enemies.get(enemies.size()-1).setXSpeed(1.5);
+				}
+				else{
+					enemies.get(enemies.size()-1).setXSpeed(-1.5);
+				}
+			}
+			
 
 			end.setX(1800);
 			end.setY(290);
@@ -179,6 +189,19 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			makePlatform(700, 390);
 			makePlatform(1500, 590);
 			
+			for(int i=0; i<3; i++){
+				Platform temp = platforms.get((int) (Math.random() * platforms.size()));
+				while(temp.getX()<=100){
+					temp = platforms.get((int) (Math.random() * platforms.size()));
+				}
+				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))&&!isPlatformNextRight(enemies.get(enemies.size()-1)))){
+					System.out.println("hit");
+					enemies.remove(enemies.size()-1);
+					i--;
+				}	
+			}
+			
 			end.setX(1800);
 			end.setY(390);
 			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
@@ -191,6 +214,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p2.spawnPlayer(201, 790);
 			platforms.clear();
 			bonuses.clear();
+			enemies.clear();
 			
 			makeBasicStartingPosition();
 			
@@ -198,6 +222,19 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			platforms.add(new Platform(600, 590, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(800, 390, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(1600, 590, 0, width, 0, height, PlatformType.SOLID));
+			
+			for(int i=0; i<3; i++){
+				Platform temp = platforms.get((int) (Math.random() * platforms.size()));
+				while(temp.getX()<=100){
+					temp = platforms.get((int) (Math.random() * platforms.size()));
+				}
+				enemies.add(new Enemy(temp.getX(), temp.getY() - 100, 0, width, 0, height, EnemyType.WEAK));
+				if(didPlayerCollideEnemy()||didPlayerCollideEnemyP2()||(!isPlatformNextLeft(enemies.get(enemies.size()-1))&&!isPlatformNextRight(enemies.get(enemies.size()-1)))){
+					System.out.println("hit");
+					enemies.remove(enemies.size()-1);
+					i--;
+				}	
+			}
 
 			end.setX(1800);
 			end.setY(390);
@@ -209,6 +246,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		case LEVEL4:{
 			platforms.clear();
 			bonuses.clear();
+			enemies.clear();
 			p1.visible = false;
 			p2.visible = false;
 			playerPick.visible = false;
@@ -242,7 +280,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 
 
 	}
-
+	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
@@ -548,6 +586,14 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					p1.setXSpeed(0);
 					p1.setYSpeed(-10);
 				}
+				for(int i = 0; i < enemies.size(); i++){
+					if((enemies.get(i).getXSpeed()>0)&&!isPlatformNextRight(enemies.get(i))){
+						enemies.get(i).setXSpeed(-1.5);
+					}
+					if((enemies.get(i).getXSpeed()<0)&&!isPlatformNextLeft(enemies.get(i))){
+						enemies.get(i).setXSpeed(1.5);
+					}
+				}
 			}
 			repaint();
 			try{
@@ -581,8 +627,16 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	
 	public boolean isPlatformNextLeft(Enemy e){
 		for(int i=0; i<platforms.size(); i++){
-			if(platforms.get(i).getX()==e.getX()-100){
-				
+			if(platforms.get(i).getX()==e.getX()-100&&platforms.get(i).getY()==e.getY()+100){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean isPlatformNextRight(Enemy e){
+		for(int i=0; i<platforms.size(); i++){
+			if(platforms.get(i).getX()==e.getX()+100&&platforms.get(i).getY()==e.getY()+100){
+				return true;
 			}
 		}
 		return false;
