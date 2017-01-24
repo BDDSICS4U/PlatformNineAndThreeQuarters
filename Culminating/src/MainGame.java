@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 public class MainGame extends JPanel implements Runnable, KeyListener {
 	HashMap<Integer,Boolean> keyMap = new HashMap<Integer,Boolean>();
-	public static Level currentLevel = Level.START;
+	public static Level currentLevel = Level.LEVEL2;
 	private boolean gameOver = false;
 	private static int count = 0;
 	private static final int width = 1920;
@@ -54,9 +54,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		p1.setVisibility(true);
 
 	}
-
+	private static JFrame frame = new JFrame();
+	private static Container c = frame.getContentPane();
 	public static void main(String[] args) {
-		JFrame frame = new JFrame();
 		frame.setSize(width,height);
 		frame.setFont(new Font("System", Font.ROMAN_BASELINE, 14));
 		String space ="";
@@ -68,16 +68,15 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 		frame.setSize(new Dimension(width, height));
 		frame.setAutoRequestFocus(false);
 		frame.setVisible(true);
-		Container c = frame.getContentPane();
+		//Container c = frame.getContentPane();
 		c.add(new MainGame());
 		frame.pack();
-		frame.setBackground(Color.CYAN);
 	}
-
+	Color background = Color.CYAN;
 	public MainGame(){
 		// Start the setup
 		this.setPreferredSize(new Dimension(width, height));
-		this.setBackground(Color.CYAN);
+		this.setBackground(background);
 		addKeyListener(this);
 		Thread gameThread = new Thread(this);
 		gameThread.start();
@@ -85,67 +84,105 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 	}
 	public void run() {
-		platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
-
-		platforms.add(new Platform(300, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(400, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(500, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(600, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(700, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(800, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(900, 690, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1000, 690, 0, width, 0, height, PlatformType.SOLID));
-
-		platforms.add(new Platform(500, 490, 0, width, 0, height, PlatformType.SOLID));
-
-		platforms.add(new Platform(800, 490, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(900, 490, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1000, 490, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1100, 490, 0, width, 0, height, PlatformType.SOLID));
-
-		platforms.add(new Platform(1200, 290, 0, width, 0, height, PlatformType.SOLID));
-		platforms.add(new Platform(1300, 290, 0, width, 0, height, PlatformType.SOLID));
-
-
-
-		platforms.add(new Platform(1800, 190, 0, width, 0, height, PlatformType.MOVING));
-		platforms.add(new Platform(1800, 290, 0, width, 0, height, PlatformType.SOLID));
-
-
-		bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
-		bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
-		bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
+		if(currentLevel == Level.LEVEL1){
+			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(300, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(400, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(500, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(600, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(700, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(800, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(900, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1000, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(500, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(800, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(900, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1000, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1100, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1200, 290, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1300, 290, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1800, 190, 0, width, 0, height, PlatformType.MOVING));
+			platforms.add(new Platform(1800, 290, 0, width, 0, height, PlatformType.SOLID));
+			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
+			bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
+			bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
+		}
+		else if(currentLevel == Level.LEVEL2){
+			
+			//c.setBackground(Color.BLACK);
+			platforms.clear();
+			bonuses.clear();
+			platforms.add(new Platform(0, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(100, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(200, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(300, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(400, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(500, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(600, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(700, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(800, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(900, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1000, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1100, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1200, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1300, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1400, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1500, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1600, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1700, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1800, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1900, 890, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 790, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 690, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 490, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 390, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 290, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 190, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 90, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(0, 0, 0, width, 0, height, PlatformType.SOLID));
+			
+			platforms.add(new Platform(300, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(400, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(700, 390, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1500, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1800, 590, 0, width, 0, height, PlatformType.SOLID));
+			
+			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
+			bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
+			bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
+		}
 		while (true) {
 			if(!gameOver){
-				
+
 				this.requestFocus();
 				p1.getX();
 				p1.getY();
@@ -165,7 +202,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 				if(didPlayerCollidePlatformR()){
 					//System.out.println("R");
 				}
-				
+
 
 
 				if(!didPlayerCollidePlatformRP2() && !didPlayerCollidePlatformLP2()){
@@ -178,7 +215,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 					if(!didPlayerCollidePlatformTP2()){
 						//Move left
 						if(keyMap.get(65) == Boolean.TRUE){
-							
+
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()-8));
@@ -196,7 +233,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						}
 						//Move right
 						if(keyMap.get(68) == Boolean.TRUE){
-							
+
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()+8));
@@ -215,7 +252,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 					if(didPlayerCollidePlatformTP2()){
 						//Jump
 						if(keyMap.get(87) == Boolean.TRUE){
-							
+
 							jumpYP2 = p2.getY();
 							p2.setXSpeed(0);
 							p2.setYSpeed(-10);
@@ -237,7 +274,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 						}
 						//Move right
 						else if(keyMap.get(68) == Boolean.TRUE){
-							
+
 							double tempX = p2.getX();
 							double tempY = p2.getY();
 							p2.setX((int) (p2.getX()+8));
@@ -264,265 +301,265 @@ public class MainGame extends JPanel implements Runnable, KeyListener {
 
 				}
 
-			
-			else if(!didPlayerCollidePlatformBP2()){
 
-				p2.setXSpeed(0);
-				p2.setYSpeed(-10);
-			}//
-			
+				else if(!didPlayerCollidePlatformBP2()){
 
-
-			if(!didPlayerCollidePlatformR() && !didPlayerCollidePlatformL()){
-				//Touching Top of Platform
-				if(didPlayerCollidePlatformT()){
-					p1.setXSpeed(0);
-					p1.setYSpeed(0);
-				}
-				//Not Touching any platform
-				if(!didPlayerCollidePlatformT()){
-					//Move left
-					if(keyMap.get(37) == Boolean.TRUE){
-						double tempX = p1.getX();
-						double tempY = p1.getY();
-						p1.setX((int) (p1.getX()-8));
-						p1.setY((int) (p1.getY()));
-						//If touch side of block can't move
-						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
-							p1.setX((int) tempX);
-							p1.setY((int) tempY);
-							p1.setXSpeed(0);
-							p1.setYSpeed(0);
-							System.out.println("yes");
-						}
+					p2.setXSpeed(0);
+					p2.setYSpeed(-10);
+				}//
 
 
-					}
-					//Move right
-					if(keyMap.get(39) == Boolean.TRUE){
-						double tempX = p1.getX();
-						double tempY = p1.getY();
-						p1.setX((int) (p1.getX()+8));
-						p1.setY((int) (p1.getY()));
-						//If touch side of block can't move
-						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL()){
-							p1.setX((int) tempX);
-							p1.setY((int) tempY);
-							p1.setXSpeed(0);
-							p1.setYSpeed(0);
-							System.out.println("yes");
-						}
-					}
-				}
-				//Touching a platform
-				if(didPlayerCollidePlatformT()){
-					//Jump
-					if(keyMap.get(38) == Boolean.TRUE){
-						jumpYP1 = p1.getY();
+
+				if(!didPlayerCollidePlatformR() && !didPlayerCollidePlatformL()){
+					//Touching Top of Platform
+					if(didPlayerCollidePlatformT()){
 						p1.setXSpeed(0);
-						p1.setYSpeed(-10);
+						p1.setYSpeed(0);
 					}
-					//Move left
-					else if(keyMap.get(37) == Boolean.TRUE){
-						double tempX = p1.getX();
-						double tempY = p1.getY();
-						p1.setX((int) (p1.getX()-8));
-						p1.setY((int) (p1.getY()));
-						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
-							p1.setX((int) tempX);
-							p1.setY((int) tempY);
-							p1.setXSpeed(0);
-							p1.setYSpeed(0);
+					//Not Touching any platform
+					if(!didPlayerCollidePlatformT()){
+						//Move left
+						if(keyMap.get(37) == Boolean.TRUE){
+							double tempX = p1.getX();
+							double tempY = p1.getY();
+							p1.setX((int) (p1.getX()-8));
+							p1.setY((int) (p1.getY()));
+							//If touch side of block can't move
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
+								p1.setX((int) tempX);
+								p1.setY((int) tempY);
+								p1.setXSpeed(0);
+								p1.setYSpeed(0);
+								System.out.println("yes");
+							}
+
+
 						}
-
-					}
-					//Move right
-					else if(keyMap.get(39) == Boolean.TRUE){
-						double tempX = p1.getX();
-						double tempY = p1.getY();
-						p1.setX((int) (p1.getX()+8));
-						p1.setY((int) (p1.getY()));
-						if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
-							p1.setX((int) tempX);
-							p1.setY((int) tempY);
-							p1.setXSpeed(0);
-							p1.setYSpeed(0);
+						//Move right
+						if(keyMap.get(39) == Boolean.TRUE){
+							double tempX = p1.getX();
+							double tempY = p1.getY();
+							p1.setX((int) (p1.getX()+8));
+							p1.setY((int) (p1.getY()));
+							//If touch side of block can't move
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL()){
+								p1.setX((int) tempX);
+								p1.setY((int) tempY);
+								p1.setXSpeed(0);
+								p1.setYSpeed(0);
+								System.out.println("yes");
+							}
 						}
 					}
-				}
-				//Not touching bottom(Falling)
-				if(!didPlayerCollidePlatformT()&& p1.getYSpeed() ==0){
-					p1.setYSpeed(10);
-				}
-				//Not touching bottom and descending from jump
-				if(!didPlayerCollidePlatformT() && p1.getY() == jumpYP1-250){
-					p1.setXSpeed(0);
-					p1.setYSpeed(10);
-				}
+					//Touching a platform
+					if(didPlayerCollidePlatformT()){
+						//Jump
+						if(keyMap.get(38) == Boolean.TRUE){
+							jumpYP1 = p1.getY();
+							p1.setXSpeed(0);
+							p1.setYSpeed(-10);
+						}
+						//Move left
+						else if(keyMap.get(37) == Boolean.TRUE){
+							double tempX = p1.getX();
+							double tempY = p1.getY();
+							p1.setX((int) (p1.getX()-8));
+							p1.setY((int) (p1.getY()));
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
+								p1.setX((int) tempX);
+								p1.setY((int) tempY);
+								p1.setXSpeed(0);
+								p1.setYSpeed(0);
+							}
+
+						}
+						//Move right
+						else if(keyMap.get(39) == Boolean.TRUE){
+							double tempX = p1.getX();
+							double tempY = p1.getY();
+							p1.setX((int) (p1.getX()+8));
+							p1.setY((int) (p1.getY()));
+							if(didPlayerCollidePlatformR() || didPlayerCollidePlatformL() ){
+								p1.setX((int) tempX);
+								p1.setY((int) tempY);
+								p1.setXSpeed(0);
+								p1.setYSpeed(0);
+							}
+						}
+					}
+					//Not touching bottom(Falling)
+					if(!didPlayerCollidePlatformT()&& p1.getYSpeed() ==0){
+						p1.setYSpeed(10);
+					}
+					//Not touching bottom and descending from jump
+					if(!didPlayerCollidePlatformT() && p1.getY() == jumpYP1-250){
+						p1.setXSpeed(0);
+						p1.setYSpeed(10);
+					}
 
 
 
+				}
+
+			}
+			else if(!didPlayerCollidePlatformB()){
+
+				p1.setXSpeed(0);
+				p1.setYSpeed(-10);
+			}
+
+			repaint();
+			try{
+				Thread.sleep(pauseDuration);
+			} catch(InterruptedException e){
 			}
 
 		}
-		else if(!didPlayerCollidePlatformB()){
+	}
 
-			p1.setXSpeed(0);
-			p1.setYSpeed(-10);
+	private void resetLevel() {
+
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		p1.draw(g);
+		p2.draw(g);
+		for(int i =0; i < platforms.size(); i++){
+			platforms.get(i).draw(g);
 		}
+		for(int i =0; i < bonuses.size(); i++){
+			bonuses.get(i).draw(g);
+		}
+	}
 
+
+	public boolean didPlayerCollideEnemy(){
+		return true;
+	}
+	public boolean didPlayerCollideBonus(){
+		for(int i =0; i < bonuses.size(); i++){
+			if	((bonuses.get(i).getX() >= p1.getX() - 100 && bonuses.get(i).getX() <= p1.getX() + 100) && (bonuses.get(i).getY() >= p1.getY() - 100 && bonuses.get(i).getY() <= p1.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformT(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY()+ 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformB(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY() -100 )){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformL(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() == p1.getX() + 100 ) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformR(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() == p1.getX() -100) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+
+	public boolean didPlayerCollidePlatformTP2(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY()+ 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformBP2(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY() -100 )){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformLP2(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() == p2.getX() + 100 ) && (platforms.get(i).getY() >= p2.getY() - 100 && platforms.get(i).getY() <= p2.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollidePlatformRP2(){
+		for(int i =0; i < platforms.size(); i++){
+			if	((platforms.get(i).getX() == p2.getX() -100) && (platforms.get(i).getY() >= p2.getY() - 100 && platforms.get(i).getY() <= p2.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+
+
+	public void gameOver(){
+		gameOver = true;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		keyMap.put(e.getKeyCode(), true);
+
+		if(e.getKeyCode() == 39){
+			keyMap.remove(38);
+			keyMap.remove(37);
+		}
+		if(e.getKeyCode() == 37){
+			keyMap.remove(39);
+			keyMap.remove(38);
+		}
+		if(e.getKeyCode() == 38){
+			keyMap.remove(39);
+			keyMap.remove(37);
+		}
+		if(e.getKeyCode() == 87){
+			keyMap.remove(65);
+			keyMap.remove(68);
+		}
+		if(e.getKeyCode() == 65){
+			keyMap.remove(68);
+			keyMap.remove(87);
+		}
+		if(e.getKeyCode() == 68){
+			keyMap.remove(87);
+			keyMap.remove(65);
+		}
 		repaint();
-		try{
-			Thread.sleep(pauseDuration);
-		} catch(InterruptedException e){
-		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		repaint();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
 
 	}
-}
-
-private void resetLevel() {
-
-}
-
-public void paintComponent(Graphics g) {
-	super.paintComponent(g);
-	p1.draw(g);
-	p2.draw(g);
-	for(int i =0; i < platforms.size(); i++){
-		platforms.get(i).draw(g);
-	}
-	for(int i =0; i < bonuses.size(); i++){
-		bonuses.get(i).draw(g);
-	}
-}
-
-
-public boolean didPlayerCollideEnemy(){
-	return true;
-}
-public boolean didPlayerCollideBonus(){
-	for(int i =0; i < bonuses.size(); i++){
-		if	((bonuses.get(i).getX() >= p1.getX() - 100 && bonuses.get(i).getX() <= p1.getX() + 100) && (bonuses.get(i).getY() >= p1.getY() - 100 && bonuses.get(i).getY() <= p1.getY() + 100)){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformT(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY()+ 100)){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformB(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() >= p1.getX() - 100 && platforms.get(i).getX() <= p1.getX() + 100) && (platforms.get(i).getY() == p1.getY() -100 )){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformL(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() == p1.getX() + 100 ) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformR(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() == p1.getX() -100) && (platforms.get(i).getY() >= p1.getY() - 100 && platforms.get(i).getY() <= p1.getY() + 100)){
-			return true;
-		}
-	}
-	return false;
-}
-
-
-
-public boolean didPlayerCollidePlatformTP2(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY()+ 100)){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformBP2(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() >= p2.getX() - 100 && platforms.get(i).getX() <= p2.getX() + 100) && (platforms.get(i).getY() == p2.getY() -100 )){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformLP2(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() == p2.getX() + 100 ) && (platforms.get(i).getY() >= p2.getY() - 100 && platforms.get(i).getY() <= p2.getY() + 100)){
-			return true;
-		}
-	}
-	return false;
-}
-public boolean didPlayerCollidePlatformRP2(){
-	for(int i =0; i < platforms.size(); i++){
-		if	((platforms.get(i).getX() == p2.getX() -100) && (platforms.get(i).getY() >= p2.getY() - 100 && platforms.get(i).getY() <= p2.getY() + 100)){
-			return true;
-		}
-	}
-	return false;
-}
-
-
-
-
-public void gameOver(){
-	gameOver = true;
-}
-
-@Override
-public void keyPressed(KeyEvent e) {
-	keyMap.put(e.getKeyCode(), true);
-	
-	if(e.getKeyCode() == 39){
-		keyMap.remove(38);
-		keyMap.remove(37);
-	}
-	if(e.getKeyCode() == 37){
-		keyMap.remove(39);
-		keyMap.remove(38);
-	}
-	if(e.getKeyCode() == 38){
-		keyMap.remove(39);
-		keyMap.remove(37);
-	}
-	if(e.getKeyCode() == 87){
-		keyMap.remove(65);
-		keyMap.remove(68);
-	}
-	if(e.getKeyCode() == 65){
-		keyMap.remove(68);
-		keyMap.remove(87);
-	}
-	if(e.getKeyCode() == 68){
-		keyMap.remove(87);
-		keyMap.remove(65);
-	}
-	repaint();
-}
-
-@Override
-public void keyReleased(KeyEvent e) {
-	repaint();
-}
-
-@Override
-public void keyTyped(KeyEvent e) {
-	// TODO Auto-generated method stub
-
-}
 
 }
