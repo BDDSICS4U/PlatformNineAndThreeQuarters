@@ -1,5 +1,5 @@
 
 public enum PlatformType {
-	SOLID,MOVING,BREAK
+	SOLID,END
 }
  

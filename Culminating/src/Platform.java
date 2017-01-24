@@ -18,8 +18,8 @@ public class Platform extends GamePiece{
 		this.shape = shape;
 		try {                
 			image1 = ImageIO.read(new File("src/Pictures/Permanent.png"));
-			image2 = ImageIO.read(new File(""));
-			image3 = ImageIO.read(new File(""));
+			image2 = ImageIO.read(new File("src/Pictures/Moving.png"));
+			
 
 
 		} catch (IOException ex) {
@@ -34,16 +34,12 @@ public class Platform extends GamePiece{
 			//g.drawImage(image2.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
-		case MOVING:{
-			g.drawImage(image2, (int) getX(), (int) getY(), 30, 30, null);
+		case END:{
+			g.drawImage(image2, (int) getX(), (int) getY(), 100, 100, null);
 			//g.drawImage(image1.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
 		}
-		case BREAK:{
-			g.drawImage(image3, (int) getX(), (int) getY(), 30, 30, null);
-			//g.drawImage(image3.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
-			break;
-		}
+		
 		}
 
 	}

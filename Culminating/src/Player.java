@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Player extends GamePiece {
+	public boolean visible = true;
 	private int hp, coins;
 	private boolean displayed;
 	private PlayerType shape;
@@ -33,7 +34,7 @@ public class Player extends GamePiece {
 	public void draw(Graphics g) {
 		switch (shape) {
 		case PLAYER1: {
-			
+			if(visible){
 			g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
 			g.drawImage(image1, 1790, 10, 50,50,null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
@@ -42,15 +43,18 @@ public class Player extends GamePiece {
 			//g.drawImage(image1.getScaledInstance(50, 50, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			// g.drawImage(image1.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			}
 			break;
 		}
 		case PLAYER2: {
+			if(visible){
 			g.drawImage(image2, (int) getX(), (int) getY(), 100,100, null);
 			g.drawImage(image2, 1790, 70, 50,50,null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
 			g.drawString(bonusP2+"", 1850, 45);
 			// g.drawImage(image2.getScaledInstance(20, 20,
 			// Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
+			}
 			break;
 		}
 		}
