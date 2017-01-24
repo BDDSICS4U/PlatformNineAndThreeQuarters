@@ -861,7 +861,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	
 	public static void makeBasicStartingPosition(){
 		makePlatform(0, -10);
-		for (int i = 0; i < 1900; i+= 100){
+		for (int i = 0; i <= 1900; i+= 100){
 			makePlatform(i, 890);
 		}
 		for (int i = 90; i < 900; i+= 100){

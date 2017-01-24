@@ -45,10 +45,18 @@ public abstract class GamePiece implements Runnable {
 			animateOneStep();
 			x += xSpeed;
 			y += ySpeed;
-			if (x >= right | x <= left)
+			if (x > right || x < left){
+				if (x > right){
+					x = right - 101;
+				}
+				else if (x < left){
+					x = left + 101;
+				}
 				xSpeed *= -1;
-			if (y >= bottom | y <= top)
+			}
+			if (y >= bottom || y <= top){
 				ySpeed *= -1;
+			}
 			try {
 				Thread.sleep(pauseDuration);
 			} catch (InterruptedException e) {
