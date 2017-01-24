@@ -25,6 +25,20 @@ public class Player extends GamePiece {
 	public static int bonusP1 = 0;
 	public static int bonusP2 = 0;
 	
+	/**
+	 * Player constructor
+	 * 
+	 * @param x
+	 * 			double - the x value
+	 * @param y
+	 * 			double - the y value
+	 * @param left
+	 * 			int - the left side parameter of the screen 
+	 * @param right
+	 * @param top
+	 * @param bottom
+	 * @param shape
+	 */
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
 		try {
@@ -255,23 +269,50 @@ public class Player extends GamePiece {
 	 * Sets the player HP
 	 * 
 	 * @param hp
-	 * 			int - the hp to set
+	 * 			int - the HP to set
 	 */
 	public void setHP(int hp) {
 		this.hp = hp;
 	}
 
+	/**
+	 * Gets the player HP
+	 * 
+	 * @return hp
+	 * 			int - the HP
+	 */
 	public int getHP() {
 		return this.hp;
 	}
 
+	/**
+	 * Sets the coins to a value
+	 * 
+	 * @param coin
+	 * 			int - the number of coins 	
+	 */
 	public void setCoins(int coin){
 		this.coins = coin;
 	}
+	
+	/**
+	 * Adds a number of coins to the current number of coins
+	 * 
+	 * @param coin
+	 * 			int - the number of coins you want to add
+	 */
 	public void addCoins(int coin){
 		this.coins+=coin;
 	}
 
+	/**
+	 * Spawn a player in a location on the JFrame
+	 * 
+	 * @param x	
+	 * 			int - the x value
+	 * @param y
+	 * 			int - the y vallue
+	 */
 	public void spawnPlayer(int x, int y) {
 		setXSpeed(0);
 		setYSpeed(0);
