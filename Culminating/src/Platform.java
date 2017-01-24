@@ -1,4 +1,10 @@
-
+/**
+ * Platform.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
  
 import java.awt.Graphics;
 import java.awt.Image;
@@ -12,7 +18,26 @@ public class Platform extends GamePiece{
 	private Image image1;
 	private Image image2;
 	private Image image3;
-public boolean visible = true;
+	public boolean visible = true;
+	
+	/**
+	 * Platform constructor
+	 * 
+	 * @param x
+	 * 			double - the x value
+	 * @param y
+	 * 			double - the y value
+	 * @param left
+	 * 			int - the left side x parameter of the screen 
+	 * @param right
+	 * 			int - the right side x parameter of the screen
+	 * @param top
+	 * 			int - the top side y parameter of the screen
+	 * @param bottom
+	 * 			int - the top side y parameter of the screen
+	 * @param shape
+	 * 			PlayerType - the enum for what player number it is
+	 */
 	public Platform(double x, double y, int left, int right, int top, int bottom, PlatformType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -47,6 +72,9 @@ public boolean visible = true;
 
 	}
 
+	/**
+	 * Blank Method
+	 */
 	public void animateOneStep() {
 	}
 

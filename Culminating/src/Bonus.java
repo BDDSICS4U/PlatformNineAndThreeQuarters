@@ -1,4 +1,10 @@
-
+/**
+ * Bonus.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -16,6 +22,25 @@ public class Bonus extends GamePiece{
 	private Image image2;
 	private int image2Height = 50;
 	private int	image2Width = 50;
+	
+	/**
+	 * Bonus constructor
+	 * 
+	 * @param x
+	 * 			double - the x value
+	 * @param y
+	 * 			double - the y value
+	 * @param left
+	 * 			int - the left side x parameter of the screen 
+	 * @param right
+	 * 			int - the right side x parameter of the screen
+	 * @param top
+	 * 			int - the top side y parameter of the screen
+	 * @param bottom
+	 * 			int - the top side y parameter of the screen
+	 * @param shape
+	 * 			PlayerType - the enum for what player number it is
+	 */
 	public Bonus(double x, double y, int left, int right, int top, int bottom, BonusType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -28,6 +53,12 @@ public class Bonus extends GamePiece{
 		}
 	}
 
+	/**
+	 * This method draws the current player
+	 * 
+	 * @param g 
+	 * 				Graphics - The graphics object that needs to be passed through
+	 */
 	public void draw(Graphics g) {
 		switch(shape){
 		case POINT:{
@@ -44,6 +75,9 @@ public class Bonus extends GamePiece{
 
 	}
 
+	/**
+	 * Blank Method
+	 */
 	public void animateOneStep() {
 	}
 
