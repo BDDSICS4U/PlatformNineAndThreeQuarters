@@ -50,7 +50,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p2.visible = false;
 			playerPick.visible = true;
 			end.visible = false;
-			
+
 			//a square around the border of the frame
 			for (int i = 0; i < 1900; i+= 100){
 				makePlatform(i, 890);
@@ -128,7 +128,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			p2.spawnPlayer(201, 790);
 			platforms.clear();
 			bonuses.clear();
-			
+
 			makeBasicStartingPosition();
 
 			for(int i = 300; i <= 1000; i+=100){
@@ -151,9 +151,9 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					enemies.remove(enemies.size()-1);
 					i--;
 				}
-				
+
 			}
-			
+
 
 			end.setX(1800);
 			end.setY(290);
@@ -171,14 +171,14 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			platforms.clear();
 			bonuses.clear();
 			enemies.clear();
-			
+
 			makeBasicStartingPosition();
-			
+
 			makePlatform(300, 590);
 			makePlatform(400, 590);
 			makePlatform(700, 390);
 			makePlatform(1500, 590);
-			
+
 			for(int i=0; i<3; i++){
 				Platform temp = platforms.get((int) (Math.random() * platforms.size()));
 				while(temp.getX()<=100){
@@ -190,7 +190,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					i--;
 				}	
 			}
-			
+
 			end.setX(1800);
 			end.setY(390);
 			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
@@ -204,14 +204,14 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			platforms.clear();
 			bonuses.clear();
 			enemies.clear();
-			
+
 			makeBasicStartingPosition();
-			
+
 			platforms.add(new Platform(300, 590, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(600, 590, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(800, 390, 0, width, 0, height, PlatformType.SOLID));
 			platforms.add(new Platform(1600, 590, 0, width, 0, height, PlatformType.SOLID));
-			
+
 			for(int i=0; i<3; i++){
 				Platform temp = platforms.get((int) (Math.random() * platforms.size()));
 				while(temp.getX()<=100){
@@ -243,17 +243,24 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			if(p1.scoreP1 > p2.scoreP2){
 				//Player p1End = new Player(alignmentX, alignmentX, flags, flags, flags, flags, null)
 				p1.visible = true;
-				
-				p1.setX(700);
-				p1.setY(400);
+
+				p1.setX(101);
+				p1.setY(790);
 			}
 			else if(p2.scoreP2 > p1.scoreP1){
 				p2.visible = true;
+				p2.setX(101);
+				p2.setY(790);
 			}
 			else{
-
+				p2.visible = true;
+				p1.visible = true;
+				p1.setX(101);
+				p1.setY(790);
+				p2.setX(101);
+				p2.setY(790);
 			}
-			for (int i = 0; i < 1900; i+= 100){
+			for (int i = 0; i <= 1900; i+= 100){
 				makePlatform(i, 890);
 				makePlatform(i, 0);
 			}
@@ -261,14 +268,14 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				makePlatform(0, i);
 				makePlatform(1800, i);
 			}
-			
+
 			break;
-			}
+		}
 		}
 
 
 	}
-	
+
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
@@ -303,7 +310,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public void run() {
 		setup();
 		setup();
-
+		
 		while (true) {
 			if(currentLevel != Level.START){
 				//	if(!gameOver){
@@ -565,7 +572,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					}
 
 
-					
+
 				}
 
 				//}
@@ -574,14 +581,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					p1.setXSpeed(0);
 					p1.setYSpeed(-10);
 				}
-				//for(int i = 0; i < enemies.size(); i++){
-					//if((enemies.get(i).getXSpeed()>0)&&!isPlatformNextRight(enemies.get(i))){
-						//enemies.get(i).setXSpeed(-1.5);
-					//}
-					//if((enemies.get(i).getXSpeed()<0)&&!isPlatformNextLeft(enemies.get(i))){
-						//enemies.get(i).setXSpeed(1.5);
-					//}
-				//}
+
 				if(didPlayerCollideEnemy()){
 					p1.spawnPlayer(101, 790);
 				}
@@ -590,6 +590,24 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				}
 			}
 			repaint();
+			//Working on
+			for(int i = 0; i < enemies.size(); i++){
+				if(!didEnemyCollidePlatformB(enemies.get(i))){
+					if(enemies.get(i).getXSpeed() <0){
+						enemies.get(i).setX((int) (enemies.get(i).getX() + 10));
+					}
+					else if(enemies.get(i).getXSpeed() >0){
+						enemies.get(i).setX((int) (enemies.get(i).getX() - 10));
+					}
+					enemies.get(i).setXSpeed(-1 * enemies.get(i).getXSpeed());
+				}
+				
+				if((enemies.get(i).getXSpeed() == 0)){
+					
+						enemies.get(i).setXSpeed(4);
+					
+				}
+			}
 			try{
 				Thread.sleep(pauseDuration);
 			} catch(InterruptedException e){
@@ -618,7 +636,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			bonuses.get(i).draw(g);
 		}
 	}
-	
+
 	public boolean isPlatformNextLeft(Enemy e){
 		for(int i=0; i<platforms.size(); i++){
 			if((platforms.get(i).getX()==e.getX()-100)&&(platforms.get(i).getY()==e.getY()+100)){
@@ -635,16 +653,16 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		}
 		return false;
 	}
-
+	//Good
 	public boolean didEnemyCollidePlatformB(Enemy e){
 		for(int i =0; i < platforms.size(); i++){
-			if	((platforms.get(i).getX() >= e.getX() - 100 && platforms.get(i).getX() <= e.getX() + 100) && (platforms.get(i).getY() == e.getY() -100 )){
+			if	((platforms.get(i).getX() >= e.getX() - 100 && platforms.get(i).getX() <= e.getX() + 100) && (platforms.get(i).getY() == e.getY() +100 )){
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	public boolean didPlayerCollideEnemy(){
 		for(int i =0; i < enemies.size(); i++){
 			if	((enemies.get(i).getX() >= p1.getX() - 100 && enemies.get(i).getX() <= p1.getX() + 100) && (enemies.get(i).getY() >= p1.getY() - 100 && enemies.get(i).getY() <= p1.getY() + 100)){
@@ -795,24 +813,24 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	@Override
 	public void keyReleased(KeyEvent e) {
 		keyMap.remove(e.getKeyCode());
-//		if(e.getKeyCode() == 39){
-//			keyMap.remove(39);	
-//		}
-//		if(e.getKeyCode() == 37){
-//			keyMap.remove(37);
-//		}
-//		if(e.getKeyCode() == 38){
-//			keyMap.remove(38);
-//		}
-//		if(e.getKeyCode() == 87){
-//			keyMap.remove(87);
-//		}
-//		if(e.getKeyCode() == 65){
-//			keyMap.remove(65);
-//		}
-//		if(e.getKeyCode() == 68){
-//			keyMap.remove(68);
-//		}
+		//		if(e.getKeyCode() == 39){
+		//			keyMap.remove(39);	
+		//		}
+		//		if(e.getKeyCode() == 37){
+		//			keyMap.remove(37);
+		//		}
+		//		if(e.getKeyCode() == 38){
+		//			keyMap.remove(38);
+		//		}
+		//		if(e.getKeyCode() == 87){
+		//			keyMap.remove(87);
+		//		}
+		//		if(e.getKeyCode() == 65){
+		//			keyMap.remove(65);
+		//		}
+		//		if(e.getKeyCode() == 68){
+		//			keyMap.remove(68);
+		//		}
 		repaint();
 	}
 
@@ -848,11 +866,11 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public void mouseReleased(MouseEvent e) {
 
 	}
-	
+
 	public static void makePlatform(double x, double y){
 		platforms.add(new Platform(x, y, 0, width, 0, height, PlatformType.SOLID));
 	}
-	
+
 	public static void makeBasicStartingPosition(){
 		makePlatform(0, -10);
 		for (int i = 0; i <= 1900; i+= 100){
