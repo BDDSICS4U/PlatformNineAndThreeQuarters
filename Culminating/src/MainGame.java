@@ -171,12 +171,57 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			break;
 		}
 		case LEVEL3:{
+			p1.spawnPlayer(101, 790);
+			p2.spawnPlayer(201, 790);
+			platforms.clear();
+			bonuses.clear();
+			
+			makeBasicStartingPosition();
+			
+			platforms.add(new Platform(300, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(600, 590, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(800, 390, 0, width, 0, height, PlatformType.SOLID));
+			platforms.add(new Platform(1600, 590, 0, width, 0, height, PlatformType.SOLID));
+
+			end.setX(1800);
+			end.setY(390);
+			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
+			bonuses.add(new Bonus(200, 0, 0, width, 0, height, BonusType.POINT));
+			bonuses.add(new Bonus(1700, 490, 0, width, 0, height, BonusType.POINT));
 			break;
 		}
 		case LEVEL4:{
+			platforms.clear();
+			bonuses.clear();
+			p1.visible = false;
+			p2.visible = false;
+			playerPick.visible = false;
+			end.visible = false;
 
+			if(p1.scoreP1 > p2.scoreP2){
+				//Player p1End = new Player(alignmentX, alignmentX, flags, flags, flags, flags, null)
+				p1.visible = true;
+				
+				p1.setX(700);
+				p1.setY(400);
+			}
+			else if(p2.scoreP2 > p1.scoreP1){
+				p2.visible = true;
+			}
+			else{
+
+			}
+			for (int i = 0; i < 1900; i+= 100){
+				makePlatform(i, 890);
+				makePlatform(i, 0);
+			}
+			for (int i = 90; i < 800; i+= 100){
+				makePlatform(0, i);
+				makePlatform(1800, i);
+			}
+			
 			break;
-		}
+			}
 		}
 
 
