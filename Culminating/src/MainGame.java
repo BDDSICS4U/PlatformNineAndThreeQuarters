@@ -24,7 +24,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	private static final int height = 990;
 	private long pauseDuration = 30;
 	//Player One
-
+	public static int winsP1 = 0;
+	public static int winsP2 = 0;
 	public static P1Character p1Char = P1Character.PENGUIN;
 	public static P2Character p2Char = P2Character.PIG;
 	public static int key;
@@ -41,6 +42,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public void setup(){
 		switch(currentLevel){
 		case START:{
+			counter++;
 			platforms.clear();
 			bonuses.clear();
 			p1.visible = false;
@@ -330,6 +332,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				//	if(!gameOver){
 				if(didPlayerCollideEndP1()){
 					counter++;
+					winsP1++;
 					if (counter == 0){
 						currentLevel = Level.START;
 					}
@@ -348,6 +351,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 					setup();
 				}
 				if(didPlayerCollideEndP2()){
+					counter++;
+					winsP2++;
 					if (counter == 0){
 						currentLevel = Level.START;
 					}
@@ -368,9 +373,13 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				this.requestFocus();
 				p1.getX();
 				p1.getY();
-				if(didPlayerCollideBonus()){
+				if(didPlayerCollideBonusP1()){
 					p1.bonusP1++;
 					System.out.println(p1.bonusP1);
+				}
+				if(didPlayerCollideBonusP2()){
+					p1.bonusP2++;
+					System.out.println(p2.bonusP2);
 				}
 				if(didPlayerCollidePlatformB()){
 					//System.out.println("B");
@@ -633,7 +642,15 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		}
 		return false;
 	}
-	public boolean didPlayerCollideBonus(){
+	public boolean didPlayerCollideBonusP2(){
+		for(int i =0; i < bonuses.size(); i++){
+			if	((bonuses.get(i).getX() >= p2.getX() - 100 && bonuses.get(i).getX() <= p2.getX() + 100) && (bonuses.get(i).getY() >= p2.getY() - 100 && bonuses.get(i).getY() <= p2.getY() + 100)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean didPlayerCollideBonusP1(){
 		for(int i =0; i < bonuses.size(); i++){
 			if	((bonuses.get(i).getX() >= p1.getX() - 100 && bonuses.get(i).getX() <= p1.getX() + 100) && (bonuses.get(i).getY() >= p1.getY() - 100 && bonuses.get(i).getY() <= p1.getY() + 100)){
 				return true;

@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Player extends GamePiece {
+	public static int scoreP1 = 0;
+	public static int scoreP2 = 0;
 	public boolean visible = true;
 	private int hp, coins;
 	private boolean displayed;
@@ -105,10 +107,11 @@ public class Player extends GamePiece {
 				catch (IOException ex) {
 					System.out.println("No Images");
 				}
+				scoreP1 = (MainGame.winsP1 * 500) + (bonusP1);
 				g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
 				g.drawImage(image1, 1790, 10, 50,50,null);
 				g.setFont(new Font("SansSerif",Font.BOLD,25));
-				g.drawString(bonusP1+"", 1850, 45);
+				g.drawString(scoreP1+"", 1850, 45);
 
 			}
 			break;
@@ -141,10 +144,11 @@ public class Player extends GamePiece {
 				}catch (IOException ex) {
 					System.out.println("No Images");
 				}
+				scoreP2 = (MainGame.winsP2 * 500) + (bonusP2);
 				g.drawImage(image2, (int) getX(), (int) getY(), 100,100, null);
 				g.drawImage(image2, 1790, 70, 50,50,null);
 				g.setFont(new Font("SansSerif",Font.BOLD,25));
-				g.drawString(bonusP2+"", 1850, 45);
+				g.drawString(scoreP2+"", 1850, 100);
 
 			}
 			break;
