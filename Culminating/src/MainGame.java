@@ -132,21 +132,15 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			
 			makeBasicStartingPosition();
 
-			platforms.add(new Platform(300, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(600, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 690, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(500, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(800, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(900, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1000, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1100, 490, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1200, 290, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1300, 290, 0, width, 0, height, PlatformType.SOLID));
+			for(int i = 300; i <= 1000; i+=100){
+				makePlatform(i, 690);
+			}
+			makePlatform(500, 490);
+			for(int i = 800; i <= 1100; i+=100){
+				makePlatform(i, 490);
+			}
+			makePlatform(1200, 290);
+			makePlatform(1300, 290);
 
 			end.setX(1800);
 			end.setY(290);
@@ -166,15 +160,13 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			platforms.clear();
 			bonuses.clear();
 			
-			
 			makeBasicStartingPosition();
 			
-
-			platforms.add(new Platform(300, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(400, 590, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(700, 390, 0, width, 0, height, PlatformType.SOLID));
-			platforms.add(new Platform(1500, 590, 0, width, 0, height, PlatformType.SOLID));
-
+			makePlatform(300, 590);
+			makePlatform(400, 590);
+			makePlatform(700, 390);
+			makePlatform(1500, 590);
+			
 			end.setX(1800);
 			end.setY(390);
 			bonuses.add(new Bonus(1000, 590, 0, width, 0, height, BonusType.POINT));
@@ -195,6 +187,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			
 			
 			
+			end.setX(width-100);
+			end.setY(100);
 			
 			break;
 		}
