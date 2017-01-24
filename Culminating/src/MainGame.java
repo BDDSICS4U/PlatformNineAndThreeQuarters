@@ -64,46 +64,59 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			//PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
 			repaint();
 			while(true){
+				//System.out.println("in");
+				System.out.println(mouseX);
+				System.out.println(mouseY);
 				if(mouseX >= 120 && mouseX <= 420 && mouseY >= 300 && mouseY <= 600){
 					p1Char = P1Character.PIG;
+					System.out.println("Click");
 					break;
 				}
 				else if(mouseX >= 520 && mouseX <= 820 && mouseY >= 300 && mouseY <= 600){
 					p1Char = P1Character.PENGUIN;
+					System.out.println("Click");
 					break;
 				}
 				else if(mouseX >= 1100 && mouseX <= 1400 && mouseY >= 300 && mouseY <= 600){
 					p1Char = P1Character.LION;
+					System.out.println("Click");
 					break;
 				}
 				else if(mouseX >= 1500 && mouseX <= 1800 && mouseY >= 300 && mouseY <= 600){
 					p1Char = P1Character.SHARK;
+					System.out.println("Click");
 					break;
 				}
 			}
 			while(true){
+				System.out.println("in");
 				if(mouseX >= 120 && mouseX <= 420 && mouseY >= 300 && mouseY <= 600){
 					if(p1Char != P1Character.PIG){
 						p2Char = P2Character.PIG;
+						System.out.println("Click");
 						break;}
 				}
 				else if(mouseX >= 520 && mouseX <= 820 && mouseY >= 300 && mouseY <= 600){
 					if(p1Char != P1Character.PENGUIN){
 						p2Char = P2Character.PENGUIN;
+						System.out.println("Click");
 						break;}
 				}
 				else if(mouseX >= 1100 && mouseX <= 1400 && mouseY >= 300 && mouseY <= 600){
 					if(p1Char != P1Character.LION){
 						p2Char = P2Character.LION;
+						System.out.println("Click");
 						break;}
 				}
 				else if(mouseX >= 1500 && mouseX <= 1800 && mouseY >= 300 && mouseY <= 600){
 					if(p1Char != P1Character.SHARK){
 						p2Char = P2Character.SHARK;
+						System.out.println("Click");
 						break;}
 				}
 			}
 			currentLevel = Level.LEVEL1;
+			System.out.println("Out");
 			break;
 		}
 		case LEVEL1:{
@@ -339,10 +352,26 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				p1.getY();
 				if(didPlayerCollideBonusP1()){
 					p1.bonusP1++;
+					System.out.println(p1.bonusP1);
 				}
 				if(didPlayerCollideBonusP2()){
 					p1.bonusP2++;
+					System.out.println(p2.bonusP2);
 				}
+				if(didPlayerCollidePlatformB()){
+					//System.out.println("B");
+				}
+				if(didPlayerCollidePlatformT()){
+					//System.out.println("T");
+				}
+				if(didPlayerCollidePlatformL()){
+					//System.out.println("L");
+				}
+				if(didPlayerCollidePlatformR()){
+					//System.out.println("R");
+				}
+
+
 
 				if(!didPlayerCollidePlatformRP2() && !didPlayerCollidePlatformLP2()){
 					//Touching Top of Platform
@@ -365,6 +394,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 								p2.setY((int) tempY);
 								p2.setXSpeed(0);
 								p2.setYSpeed(0);
+								System.out.println("yes");
 							}
 
 
@@ -382,6 +412,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 								p2.setY((int) tempY);
 								p2.setXSpeed(0);
 								p2.setYSpeed(0);
+								System.out.println("yes");
 							}
 						}
 					}
@@ -466,6 +497,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 								p1.setY((int) tempY);
 								p1.setXSpeed(0);
 								p1.setYSpeed(0);
+								System.out.println("yes");
 							}
 
 
@@ -482,6 +514,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 								p1.setY((int) tempY);
 								p1.setXSpeed(0);
 								p1.setYSpeed(0);
+								System.out.println("yes");
 							}
 						}
 					}
@@ -563,6 +596,10 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			}
 
 		}
+	}
+
+	private void resetLevel() {
+
 	}
 
 	public void paintComponent(Graphics g) {
@@ -725,6 +762,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	@Override
 	public void keyPressed(KeyEvent e) {
 		key = e.getKeyCode();
+		//System.out.println(e.getKeyCode());
 		keyMap.put(e.getKeyCode(), true);
 
 		if(e.getKeyCode() == 39){
@@ -817,7 +855,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	
 	public static void makeBasicStartingPosition(){
 		makePlatform(0, -10);
-		for (int i = 0; i <= 1900; i+= 100){
+		for (int i = 0; i < 1900; i+= 100){
 			makePlatform(i, 890);
 		}
 		for (int i = 90; i < 900; i+= 100){
