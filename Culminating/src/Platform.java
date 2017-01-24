@@ -17,8 +17,8 @@ public boolean visible = true;
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {                
-			image1 = ImageIO.read(new File("src/Pictures/Permanent.png"));
-			image2 = ImageIO.read(new File("src/Pictures/Moving.png"));
+			image1 = ImageIO.read(new File("src/resources/Permanent.png"));
+			image2 = ImageIO.read(new File("src/resources/Moving.png"));
 			
 
 

@@ -18,10 +18,10 @@ public class PlayerSelect extends GamePiece {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {
-			image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
-			image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
-			image3 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
-			image4 = ImageIO.read(new File("src/Pictures/Shark.png"));
+			image1 = ImageIO.read(new File("src/resources/Pig.png"));
+			image2 = ImageIO.read(new File("src/resources/Penguin.png"));
+			image3 = ImageIO.read(new File("src/resources/Lion.png"));
+			image4 = ImageIO.read(new File("src/resources/Shark.png"));
 
 		} catch (IOException ex) {
 			System.out.println("No Images");

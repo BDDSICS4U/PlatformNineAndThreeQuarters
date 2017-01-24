@@ -19,10 +19,10 @@ public class Enemy extends GamePiece{
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {                
-			image1 = ImageIO.read(new File(""));
-			image2 = ImageIO.read(new File(""));
-			image3 = ImageIO.read(new File(""));
-			image4 = ImageIO.read(new File(""));
+			image1 = ImageIO.read(new File("src/resources/EnemyPig"));
+			image2 = ImageIO.read(new File("src/resources/EnemyLion"));
+			image3 = ImageIO.read(new File("src/resources/EnemyShark"));
+			image4 = ImageIO.read(new File("src/resources/EnemyPenguin"));
 
 
 		} catch (IOException ex) {
