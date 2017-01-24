@@ -32,19 +32,19 @@ public class PlayerSelect extends GamePiece {
 		if(visible){
 			g.drawImage(image1, 120, 300, 300,300, null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString("Pig (1)", 240, 250);
+			g.drawString("Pig", 240, 250);
 			
 			g.drawImage(image2, 520, 300, 300,300, null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString("Penguin (2)", 610, 250);
+			g.drawString("Penguin", 610, 250);
 			
 			g.drawImage(image3, 1100, 300, 300,300, null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString("Lion (3)", 1200, 250);
+			g.drawString("Lion", 1200, 250);
 			
 			g.drawImage(image4, 1500, 300, 300,300, null);
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString("Shark (4)", 1600, 250);
+			g.drawString("Shark", 1600, 250);
 			
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
 			g.drawString("Select two Characters", 780, 850);

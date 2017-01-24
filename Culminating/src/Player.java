@@ -1,4 +1,10 @@
-
+/**
+ * Culmanating.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -18,6 +24,7 @@ public class Player extends GamePiece {
 	private BufferedImage image2;
 	public static int bonusP1 = 0;
 	public static int bonusP2 = 0;
+	
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
 		try {
@@ -66,19 +73,22 @@ public class Player extends GamePiece {
 				break;
 			}
 
-
 			} 
 		}catch (IOException ex) {
 			System.out.println("No Images");
 		}
-
-
 
 		this.shape = shape;
 		setHP(3);
 		this.coins = 0;
 	}
 
+	/**
+	 * This method draws the current player
+	 * 
+	 * @param g 
+	 * 				Graphics - The graphics object that needs to be passed through
+	 */
 	public void draw(Graphics g) {
 		switch (shape) {
 		case PLAYER1: {
@@ -225,13 +235,28 @@ public class Player extends GamePiece {
 
 	}
 
+	/**
+	 * This method sets visibility
+	 * 
+	 * @param visible
+	 * 					boolean - the visibility
+	 */
 	public void setVisibility(boolean visible){
 		this.displayed = visible;
 	}
 
+	/**
+	 * Blank Method
+	 */
 	public void animateOneStep() {
 	}
 
+	/**
+	 * Sets the player HP
+	 * 
+	 * @param hp
+	 * 			int - the hp to set
+	 */
 	public void setHP(int hp) {
 		this.hp = hp;
 	}

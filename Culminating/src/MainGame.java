@@ -604,10 +604,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 		}
 	}
 
-	private void resetLevel() {
-
-	}
-
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		playerPick.draw(g);
