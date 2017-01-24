@@ -24,20 +24,20 @@ public class Player extends GamePiece {
 			P1Character choice = MainGame.p1Char;
 			switch(choice){
 			case PIG:{
-				image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+				image1 = ImageIO.read(new File("src/resources/Pig.png"));
 				break;
 			}
 			case LION:{
-				image1 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+				image1 = ImageIO.read(new File("src/resources/Lion.png"));
 				break;
 			}
 			case SHARK:{
 				System.out.println("shark");
-				image1 = ImageIO.read(new File("src/Pictures/Shark.png"));
+				image1 = ImageIO.read(new File("src/resources/Shark.png"));
 				break;
 			}
 			case PENGUIN:{
-				image1 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+				image1 = ImageIO.read(new File("src/resources/Penguin.png"));
 				break;
 			}
 			}}
@@ -50,19 +50,19 @@ public class Player extends GamePiece {
 			switch(choice){
 			case PIG:{
 				System.out.println("pig");
-				image2 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+				image2 = ImageIO.read(new File("src/resources/Pig.png"));
 				break;
 			}
 			case LION:{
-				image2 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+				image2 = ImageIO.read(new File("src/resources/Lion.png"));
 				break;
 			}
 			case SHARK:{
-				image2 = ImageIO.read(new File("src/Pictures/Shark.png"));
+				image2 = ImageIO.read(new File("src/resources/Shark.png"));
 				break;
 			}
 			case PENGUIN:{
-				image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+				image2 = ImageIO.read(new File("src/resources/Penguin.png"));
 				break;
 			}
 
@@ -87,20 +87,20 @@ public class Player extends GamePiece {
 					P1Character choice = MainGame.p1Char;
 					switch(choice){
 					case PIG:{
-						image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+						image1 = ImageIO.read(new File("src/resources/Pig.png"));
 						break;
 					}
 					case LION:{
-						image1 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+						image1 = ImageIO.read(new File("src/resources/Lion.png"));
 						break;
 					}
 					case SHARK:{
 						System.out.println("shark");
-						image1 = ImageIO.read(new File("src/Pictures/Shark.png"));
+						image1 = ImageIO.read(new File("src/resources/Shark.png"));
 						break;
 					}
 					case PENGUIN:{
-						image1 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+						image1 = ImageIO.read(new File("src/resources/Penguin.png"));
 						break;
 					}
 					}}
@@ -123,19 +123,19 @@ public class Player extends GamePiece {
 					switch(choice){
 					case PIG:{
 						System.out.println("pig");
-						image2 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+						image2 = ImageIO.read(new File("src/resources/Pig.png"));
 						break;
 					}
 					case LION:{
-						image2 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+						image2 = ImageIO.read(new File("src/resources/Lion.png"));
 						break;
 					}
 					case SHARK:{
-						image2 = ImageIO.read(new File("src/Pictures/Shark.png"));
+						image2 = ImageIO.read(new File("src/resources/Shark.png"));
 						break;
 					}
 					case PENGUIN:{
-						image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+						image2 = ImageIO.read(new File("src/resources/Penguin.png"));
 						break;
 					}
 

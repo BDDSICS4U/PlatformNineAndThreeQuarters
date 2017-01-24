@@ -13,6 +13,7 @@ public class Enemy extends GamePiece{
 	private Image image1;
 	private Image image2;
 	private Image image3;
+	private Image image4;
 
 	public Enemy(double x, double y, int left, int right, int top, int bottom, EnemyType shape) {
 		super(x, y, left, right, top, bottom);
@@ -21,6 +22,7 @@ public class Enemy extends GamePiece{
 			image1 = ImageIO.read(new File(""));
 			image2 = ImageIO.read(new File(""));
 			image3 = ImageIO.read(new File(""));
+			image4 = ImageIO.read(new File(""));
 
 
 		} catch (IOException ex) {
@@ -44,6 +46,9 @@ public class Enemy extends GamePiece{
 			g.drawImage(image3, (int) getX(), (int) getY(), 30, 30, null);
 			//g.drawImage(image3.getScaledInstance(20, 20, Image.SCALE_DEFAULT), (int) getX(), (int) getY(), null);
 			break;
+		}
+		case BOSS:{
+			g.drawImage(image4, (int) getX(), (int) getY(), 30, 30, null);
 		}
 		}
 

@@ -20,8 +20,8 @@ public class Bonus extends GamePiece{
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
 		try {                
-			image1 = ImageIO.read(new File("src/Pictures/Life.png"));
-			image2 = ImageIO.read(new File(""));
+			image1 = ImageIO.read(new File("src/resources/Coin.png"));
+			image2 = ImageIO.read(new File("src/resources/Life.png"));
 
 		} catch (IOException ex) {
 			System.out.println("No Images");

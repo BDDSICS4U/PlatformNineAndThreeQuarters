@@ -1,4 +1,4 @@
  
 public enum EnemyType {
-	WEAK,MEDIUM,STRONG
+	WEAK,MEDIUM,STRONG,BOSS
 }

@@ -403,7 +403,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 
 
 				else if(!didPlayerCollidePlatformBP2()){
-
 					p2.setXSpeed(0);
 					p2.setYSpeed(-10);
 				}//
@@ -701,7 +700,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -710,33 +708,27 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public static int mouseX =0;
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		mouseX=e.getX();
 		mouseY=e.getY();
-
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 	
