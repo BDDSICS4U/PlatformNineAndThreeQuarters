@@ -52,6 +52,12 @@ public class Platform extends GamePiece{
 		}
 	}
 
+	/**
+	 * This method draws the current Platform
+	 * 
+	 * @param g 
+	 * 				Graphics - The graphics object that needs to be passed through
+	 */
 	public void draw(Graphics g) {
 		switch(shape){
 		case SOLID:{

@@ -1,7 +1,13 @@
+/**
+ * GamePiece.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 
 public abstract class GamePiece implements Runnable {
  
@@ -17,6 +23,24 @@ public abstract class GamePiece implements Runnable {
 	protected Color color;
 	private boolean moving;
 
+	/**
+	 * GamePiece constructor
+	 * 
+	 * @param x
+	 * 			double - the x value
+	 * @param y
+	 * 			double - the y value
+	 * @param left
+	 * 			int - the left side x parameter of the screen 
+	 * @param right
+	 * 			int - the right side x parameter of the screen
+	 * @param top
+	 * 			int - the top side y parameter of the screen
+	 * @param bottom
+	 * 			int - the top side y parameter of the screen
+	 * @param shape
+	 * 			PlayerType - the enum for what player number it is
+	 */
 	public GamePiece(double x, double y, int left, int right, int top, int bottom) {
 		this.pauseDuration = 40;
 		this.xSpeed = 0;
@@ -31,16 +55,25 @@ public abstract class GamePiece implements Runnable {
 		startThread();
 	}
 
+	/**
+	 * Start the thread
+	 */
 	public void startThread() {
 		moving = true;
 		Thread t = new Thread(this);
 		t.start();
 	}
 
+	/**
+	 * Stop the thread
+	 */
 	public void stopThread() {
 		moving = false;
 	}
 
+	/**
+	 * run one frame of the gamepiece
+	 */
 	public void run() {
 		while (moving) {
 			animateOneStep();
@@ -65,18 +98,42 @@ public abstract class GamePiece implements Runnable {
 		}
 	}
 
+	/**
+	 * used to draw a game piece
+	 */
 	abstract public void draw(Graphics g);
 
+	/**
+	 * used to animate one step
+	 */
 	abstract public void animateOneStep();
 
+	/**
+	 * Get the x coordinate of the current game piece
+	 * 
+	 * @return x
+	 * 			int - the x value
+	 */
 	public double getX() {
 		return x;
 	}
 
+	/**
+	 * Get the y coordinate of the current game piece
+	 * 
+	 * @return y
+	 * 			int - the y value
+	 */
 	public double getY() {
 		return y;
 	}
 
+	/**
+	 * Get the current x speed
+	 * 	
+	 * @return xSpeed
+	 * 			double - the x speed
+	 */
 	public double getXSpeed(){
 		return xSpeed;
 	}
