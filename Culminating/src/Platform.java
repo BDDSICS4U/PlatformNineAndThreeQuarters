@@ -36,7 +36,7 @@ public class Platform extends GamePiece{
 	 * @param bottom
 	 * 			int - the top side y parameter of the screen
 	 * @param shape
-	 * 			PlayerType - the enum for what player number it is
+	 * 			PlayerType - the enum for what platform type it is
 	 */
 	public Platform(double x, double y, int left, int right, int top, int bottom, PlatformType shape) {
 		super(x, y, left, right, top, bottom);

@@ -39,7 +39,7 @@ public abstract class GamePiece implements Runnable {
 	 * @param bottom
 	 * 			int - the top side y parameter of the screen
 	 * @param shape
-	 * 			PlayerType - the enum for what player number it is
+	 * 			PlayerType - the enum for what it is
 	 */
 	public GamePiece(double x, double y, int left, int right, int top, int bottom) {
 		this.pauseDuration = 40;

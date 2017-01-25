@@ -1,3 +1,11 @@
+/**
+ * MainGame.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -16,39 +24,51 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 
 public class MainGame extends JPanel implements Runnable, KeyListener, MouseListener {
+	//stores all the key codes for multiple key funtionality
 	HashMap<Integer, Boolean> keyMap = new HashMap<Integer, Boolean>();
+	
+	//sets the current level to the starting level
 	public static Level currentLevel = Level.START;
 	private boolean gameOver = false;
 	private static int count = 0;
+	
+	//sets the size of the JFrame
 	private static final int width = 1920;
 	private static final int height = 990;
 	private long pauseDuration = 30;
-	// Player One
 	public static int winsP1 = 0;
 	public static int winsP2 = 0;
+	
+	//sets the default player characters
 	public static P1Character p1Char = P1Character.PENGUIN;
 	public static P2Character p2Char = P2Character.PIG;
-	public static int key;
+	
+	//make 2 new characters
 	Player p1 = new Player(101, 790, 0, width, 0, height, PlayerType.PLAYER1);
 	Player p2 = new Player(201, 790, 0, width, 0, height, PlayerType.PLAYER2);
+	
+	//make the arrays of assorted things
 	public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	public static ArrayList<Platform> platforms = new ArrayList<Platform>(0);
 	public static ArrayList<Bonus> bonuses = new ArrayList<Bonus>(0);
 	public static Platform end = new Platform(0, 0, 0, width, 0, height, PlatformType.END);
+	public static PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
 	public static double jumpYP1 = 0;
 	public static double jumpYP2 = 0;
 	public static int counter = 0;
-	public static PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
-
+	
+	/**
+	 * called at the statup of the game
+	 */
 	public void setup(){
 		switch(currentLevel){
 		case START:{
 			counter++;
 			platforms.clear();
 			bonuses.clear();
-			p1.visible = false;
-			p2.visible = false;
-			playerPick..visible = true;
+			p1.setVisibility(false);
+			p2.setVisibility(false);
+			playerPick.visible = true;
 			end.visible = false;
 
 			//a square around the border of the frame
@@ -62,6 +82,7 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			}
 
 			//PlayerSelect playerPick = new PlayerSelect(0, 0, 0, width, 0, height, null);
+			//set the player character
 			repaint();
 			while(true){
 				//System.out.println("in");
@@ -120,6 +141,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 			break;
 		}
 		case LEVEL1:{
+			p1.setVisibility(true);
+			p2.setVisibility(true);
 			p2.visible = true;
 			p1.visible = true;
 			end.visible = true;
@@ -787,7 +810,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		key = e.getKeyCode();
 		// System.out.println(e.getKeyCode());
 		keyMap.put(e.getKeyCode(), true);
 
@@ -821,24 +843,6 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	@Override
 	public void keyReleased(KeyEvent e) {
 		keyMap.remove(e.getKeyCode());
-		// if(e.getKeyCode() == 39){
-		// keyMap.remove(39);
-		// }
-		// if(e.getKeyCode() == 37){
-		// keyMap.remove(37);
-		// }
-		// if(e.getKeyCode() == 38){
-		// keyMap.remove(38);
-		// }
-		// if(e.getKeyCode() == 87){
-		// keyMap.remove(87);
-		// }
-		// if(e.getKeyCode() == 65){
-		// keyMap.remove(65);
-		// }
-		// if(e.getKeyCode() == 68){
-		// keyMap.remove(68);
-		// }
 		repaint();
 	}
 

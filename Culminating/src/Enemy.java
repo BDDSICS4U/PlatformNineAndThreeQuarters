@@ -1,4 +1,10 @@
-
+/**
+ * Enemy.java
+ * @version 2017/01/24
+ * @author Daniel Nucci
+ * @author Stuart Dietrich
+ * @author Brendan Russell
+ */
  
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,6 +21,24 @@ public class Enemy extends GamePiece{
 	private Image image3;
 	private Image image4;
 
+	/**
+	 * Enemy constructor
+	 * 
+	 * @param x
+	 * 			double - the x value
+	 * @param y
+	 * 			double - the y value
+	 * @param left
+	 * 			int - the left side x parameter of the screen 
+	 * @param right
+	 * 			int - the right side x parameter of the screen
+	 * @param top
+	 * 			int - the top side y parameter of the screen
+	 * @param bottom
+	 * 			int - the top side y parameter of the screen
+	 * @param shape
+	 * 			PlayerType - the enum for what player number it is
+	 */
 	public Enemy(double x, double y, int left, int right, int top, int bottom, EnemyType shape) {
 		super(x, y, left, right, top, bottom);
 		this.shape = shape;
@@ -30,6 +54,12 @@ public class Enemy extends GamePiece{
 		}
 	}
 
+	/**
+	 * This method draws the current player
+	 * 
+	 * @param g 
+	 * 				Graphics - The graphics object that needs to be passed through
+	 */
 	public void draw(Graphics g) {
 		switch(shape){
 		case WEAK:{
@@ -54,6 +84,9 @@ public class Enemy extends GamePiece{
 
 	}
 
+	/**
+	 * Blank Method
+	 */
 	public void animateOneStep() {
 	}
 
