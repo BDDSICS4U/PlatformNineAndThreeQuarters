@@ -78,7 +78,14 @@ public class PlayerSelect extends GamePiece {
 			g.drawString("Shark", 1600, 250);
 			
 			g.setFont(new Font("SansSerif",Font.BOLD,25));
-			g.drawString("Select two Characters", 780, 850);
+			g.drawString("Select two Characters", 850, 150);
+			
+			g.setFont(new Font("SansSerif",Font.BOLD,25));
+			g.drawString("Rules: Play with two characters. Use", 200, 720);
+			g.drawString("arrows and wad to move. The blocks have ladders", 200, 750);
+			g.drawString("on the back, allowing the animals to climb. To get down,", 200, 780);
+			g.drawString("jump. Touch the yellow circles to gain points or reach the", 200, 810);
+			g.drawString("end block to get 500 points. Avoid enemies.", 200, 840);
 		}
 	}
 	

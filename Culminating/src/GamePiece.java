@@ -81,7 +81,7 @@ public abstract class GamePiece implements Runnable {
 			y += ySpeed;
 			if (x > right || x < left){
 				if (x > right){
-					x = right - 101;
+					x = right - 101; 
 				}
 				else if (x < left){
 					x = left + 101;
