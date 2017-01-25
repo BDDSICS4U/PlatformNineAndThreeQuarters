@@ -137,25 +137,63 @@ public abstract class GamePiece implements Runnable {
 	public double getXSpeed(){
 		return xSpeed;
 	}
+	
+	/**
+	 * Get the current y speed
+	 * 	
+	 * @return ySpeed
+	 * 			double - the y speed
+	 */
 	public double getYSpeed(){
 		return ySpeed;
 	}
+	
+	/**
+	 * Set the current x speed
+	 * 
+	 * @param xSpeed
+	 * 			double - the x speed you want to change to
+	 */
 	public void setXSpeed(double xSpeed) {
 		this.xSpeed = xSpeed;
 	}
 
+	/**
+	 * Set the current y speed
+	 * 
+	 * @param ySpeed
+	 * 			double - the y speed you want to change to
+	 */
 	public void setYSpeed(double ySpeed) {
 		this.ySpeed = ySpeed;
 	}
 
+	/**
+	 * set the current x value
+	 * 	
+	 * @param x
+	 * 			int - the x value you want to change to
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
+	/**
+	 * set the current x value
+	 * 	
+	 * @param x
+	 * 			int - the x value you want to change to
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
+	/**
+	 * set the current colour 
+	 * 
+	 * @param color
+	 * 			Color - the colour you want to change to
+	 */
 	public void setColor(Color color) {
 		this.color = color;
 	}
