@@ -17,8 +17,8 @@ import javax.imageio.ImageIO;
 public class Player extends GamePiece {
 	public static int scoreP1 = 0;
 	public static int scoreP2 = 0;
-	public boolean visible = true;
-	private int hp, coins;
+	public boolean visible = false;
+	private int coins;
 	private boolean displayed;
 	private PlayerType shape;
 	private BufferedImage image1;
@@ -75,7 +75,6 @@ public class Player extends GamePiece {
 			P2Character choice = MainGame.p2Char;
 			switch(choice){
 			case PIG:{
-				System.out.println("pig");
 				image2 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
 				break;
 			}
@@ -98,7 +97,6 @@ public class Player extends GamePiece {
 		}
 
 		this.shape = shape;
-		setHP(3);
 		this.coins = 0;
 	}
 
@@ -139,7 +137,7 @@ public class Player extends GamePiece {
 					}
 					scoreP1 = (MainGame.winsP1 * 500) + (bonusP1);
 					g.drawImage(image1, (int) getX(), (int) getY(), 100,100, null);
-					g.drawImage(image1, 1790, 10, 50,50,null);
+					g.drawImage(image1, 1790, 10, 50, 50, null);
 					g.setFont(new Font("SansSerif",Font.BOLD,25));
 					g.drawString(scoreP1+"", 1850, 45);
 
@@ -185,7 +183,7 @@ public class Player extends GamePiece {
 						P2Character choice = MainGame.p2Char;
 						switch(choice){
 						case PIG:{
-							System.out.println("pig");
+							//System.out.println("pig");
 							image2 = ImageIO.read(new File("src/resources/Pig.png"));
 							break;
 						}
@@ -268,26 +266,6 @@ public class Player extends GamePiece {
 	 * Blank Method
 	 */
 	public void animateOneStep() {
-	}
-
-	/**
-	 * Sets the player HP
-	 * 
-	 * @param hp
-	 * 			int - the HP to set
-	 */
-	public void setHP(int hp) {
-		this.hp = hp;
-	}
-
-	/**
-	 * Gets the player HP
-	 * 
-	 * @return hp
-	 * 			int - the HP
-	 */
-	public int getHP() {
-		return this.hp;
 	}
 
 	/**

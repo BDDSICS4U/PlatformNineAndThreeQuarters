@@ -89,12 +89,5 @@ public class PlayerSelect extends GamePiece {
 		}
 	}
 	
-	
-	/**
-	 * Blank Method
-	 */
-	public void animateOneStep() {
-	}
-	
 
 }

@@ -84,12 +84,4 @@ public class Enemy extends GamePiece{
 
 	}
 
-	/**
-	 * Blank Method
-	 */
-	public void animateOneStep() {
-	}
-
-
-
 }
