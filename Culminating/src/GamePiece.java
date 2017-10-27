@@ -76,7 +76,6 @@ public abstract class GamePiece implements Runnable {
 	 */
 	public void run() {
 		while (moving) {
-			animateOneStep();
 			x += xSpeed;
 			y += ySpeed;
 			if (x > right || x < left){
@@ -102,11 +101,6 @@ public abstract class GamePiece implements Runnable {
 	 * used to draw a game piece
 	 */
 	abstract public void draw(Graphics g);
-
-	/**
-	 * used to animate one step
-	 */
-	abstract public void animateOneStep();
 
 	/**
 	 * Get the x coordinate of the current game piece

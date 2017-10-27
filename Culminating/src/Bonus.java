@@ -17,11 +17,11 @@ import javax.imageio.ImageIO;
 public class Bonus extends GamePiece{
 	private BonusType shape;
 	private Image image1;
-	private int image1Height = 50;
-	private int	image1Width = 50;
 	private Image image2;
+	private int image1Height = 50;
+	private int	image1Width  = 50;
 	private int image2Height = 50;
-	private int	image2Width = 50;
+	private int	image2Width  = 50;
 	
 	/**
 	 * Bonus constructor
@@ -74,13 +74,6 @@ public class Bonus extends GamePiece{
 		}
 
 	}
-
-	/**
-	 * Blank Method
-	 */
-	public void animateOneStep() {
-	}
-
 
 
 }
