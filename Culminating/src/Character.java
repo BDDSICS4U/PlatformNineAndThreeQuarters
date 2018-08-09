@@ -1,11 +1,11 @@
 /**
- * P2Character.java
+ * P1Character.java
  * @version 2017/01/24
  * @author Daniel Nucci
  * @author Stuart Dietrich
  * @author Brendan Russell
  */
 
-public enum P2Character {
+public enum Character {
 	SHARK,PIG,LION,PENGUIN
 }

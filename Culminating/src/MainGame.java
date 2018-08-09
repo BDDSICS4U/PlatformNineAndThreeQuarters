@@ -40,8 +40,8 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 	public static int winsP2 = 0;
 	
 	//sets the default player characters
-	public static P1Character p1Char = P1Character.PENGUIN;
-	public static P2Character p2Char = P2Character.PIG;
+	public static Character p1Char = Character.PENGUIN;
+	public static Character p2Char = Character.PIG;
 	
 	//make 2 new characters
 	Player p1 = new Player(101, 790, 0, width, 0, height, PlayerType.PLAYER1);
@@ -92,22 +92,22 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				} catch (InterruptedException e) {
 				}
 				if(mouseX >= 120 && mouseX <= 420 && mouseY >= 300 && mouseY <= 600){
-					p1Char = P1Character.PIG;
+					p1Char = Character.PIG;
 					//System.out.println("Click");
 					break;
 				}
 				else if(mouseX >= 520 && mouseX <= 820 && mouseY >= 300 && mouseY <= 600){
-					p1Char = P1Character.PENGUIN;
+					p1Char = Character.PENGUIN;
 					//System.out.println("Click");
 					break;
 				}
 				else if(mouseX >= 1100 && mouseX <= 1400 && mouseY >= 300 && mouseY <= 600){
-					p1Char = P1Character.LION;
+					p1Char = Character.LION;
 					//System.out.println("Click");
 					break;
 				}
 				else if(mouseX >= 1500 && mouseX <= 1800 && mouseY >= 300 && mouseY <= 600){
-					p1Char = P1Character.SHARK;
+					p1Char = Character.SHARK;
 					//System.out.println("Click");
 					break;
 				}
@@ -119,26 +119,26 @@ public class MainGame extends JPanel implements Runnable, KeyListener, MouseList
 				} catch (InterruptedException e) {
 				}
 				if(mouseX >= 120 && mouseX <= 420 && mouseY >= 300 && mouseY <= 600){
-					if(p1Char != P1Character.PIG){
-						p2Char = P2Character.PIG;
+					if(p1Char != Character.PIG){
+						p2Char = Character.PIG;
 						//System.out.println("Click");
 						break;}
 				}
 				else if(mouseX >= 520 && mouseX <= 820 && mouseY >= 300 && mouseY <= 600){
-					if(p1Char != P1Character.PENGUIN){
-						p2Char = P2Character.PENGUIN;
+					if(p1Char != Character.PENGUIN){
+						p2Char = Character.PENGUIN;
 						//System.out.println("Click");
 						break;}
 				}
 				else if(mouseX >= 1100 && mouseX <= 1400 && mouseY >= 300 && mouseY <= 600){
-					if(p1Char != P1Character.LION){
-						p2Char = P2Character.LION;
+					if(p1Char != Character.LION){
+						p2Char = Character.LION;
 						//System.out.println("Click");
 						break;}
 				}
 				else if(mouseX >= 1500 && mouseX <= 1800 && mouseY >= 300 && mouseY <= 600){
-					if(p1Char != P1Character.SHARK){
-						p2Char = P2Character.SHARK;
+					if(p1Char != Character.SHARK){
+						p2Char = Character.SHARK;
 						//System.out.println("Click");
 						break;}
 				}

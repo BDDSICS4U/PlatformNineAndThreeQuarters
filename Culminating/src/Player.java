@@ -47,23 +47,23 @@ public class Player extends GamePiece {
 	public Player(double x, double y, int left, int right, int top, int bottom, PlayerType shape) {
 		super(x, y, left, right, top, bottom);
 		try {
-			P1Character choice = MainGame.p1Char;
+			Character choice = MainGame.p1Char;
 			switch(choice){
 			case PIG:{
-				image1 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+				image1 = ImageIO.read(new File("src/resources/Pig.jpg"));
 				break;
 			}
 			case LION:{
-				image1 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+				image1 = ImageIO.read(new File("src/resources/Lion.jpg"));
 				break;
 			}
 			case SHARK:{
 				System.out.println("shark");
-				image1 = ImageIO.read(new File("src/Pictures/Shark.png"));
+				image1 = ImageIO.read(new File("src/resources/Shark.png"));
 				break;
 			}
 			case PENGUIN:{
-				image1 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+				image1 = ImageIO.read(new File("src/resources/Penguin.png"));
 				break;
 			}
 			}}
@@ -72,22 +72,22 @@ public class Player extends GamePiece {
 		}
 
 		try {
-			P2Character choice = MainGame.p2Char;
+			Character choice = MainGame.p2Char;
 			switch(choice){
 			case PIG:{
-				image2 = ImageIO.read(new File("src/Pictures/Pig.jpg"));
+				image2 = ImageIO.read(new File("src/resources/Pig.jpg"));
 				break;
 			}
 			case LION:{
-				image2 = ImageIO.read(new File("src/Pictures/Lion.jpg"));
+				image2 = ImageIO.read(new File("src/resources/Lion.jpg"));
 				break;
 			}
 			case SHARK:{
-				image2 = ImageIO.read(new File("src/Pictures/Shark.png"));
+				image2 = ImageIO.read(new File("src/resources/Shark.png"));
 				break;
 			}
 			case PENGUIN:{
-				image2 = ImageIO.read(new File("src/Pictures/Penguin.png"));
+				image2 = ImageIO.read(new File("src/resources/Penguin.png"));
 				break;
 			}
 
@@ -112,7 +112,7 @@ public class Player extends GamePiece {
 			if(visible){
 				if(MainGame.currentLevel != Level.LEVEL4){
 					try {
-						P1Character choice = MainGame.p1Char;
+						Character choice = MainGame.p1Char;
 						switch(choice){
 						case PIG:{
 							image1 = ImageIO.read(new File("src/resources/Pig.png"));
@@ -145,7 +145,7 @@ public class Player extends GamePiece {
 			
 			if(MainGame.currentLevel == Level.LEVEL4){
 				try {
-					P1Character choice = MainGame.p1Char;
+					Character choice = MainGame.p1Char;
 					switch(choice){
 					case PIG:{
 						image1 = ImageIO.read(new File("src/resources/Pig.png"));
@@ -180,7 +180,7 @@ public class Player extends GamePiece {
 			if(visible){
 				if(MainGame.currentLevel != Level.LEVEL4){
 					try {
-						P2Character choice = MainGame.p2Char;
+						Character choice = MainGame.p2Char;
 						switch(choice){
 						case PIG:{
 							//System.out.println("pig");
@@ -215,7 +215,7 @@ public class Player extends GamePiece {
 			
 			if(MainGame.currentLevel == Level.LEVEL4){
 				try {
-					P2Character choice = MainGame.p2Char;
+					Character choice = MainGame.p2Char;
 					switch(choice){
 					case PIG:{
 						System.out.println("pig");
